@@ -30,12 +30,13 @@ class LoginController extends BaseController
         if (count($result) > 0) {
             if (password_verify($paramts['password'], $result[0]->password)) {
                 echo 'entro';
-                $response->withHeader('Location', '/?action=hola');
+                return $response->withHeader('Location', './hola');
             }
-            $response->withHeader('Location', '/?action=warning');
+            return $response->withHeader('Location', '/hola'); //->withStatus(302);
+            echo 'entro 0';
         } else {
-            $response->withHeader('Location', '/?action=warning');
+            return $response->withHeader('Location', './?action=warning');
         }
-        return $response->withHeader('Location', '/?action=warning');
+        return $response->withHeader('Location', './?action=warning');
     }
 }
