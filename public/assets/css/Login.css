@@ -1,0 +1,8 @@
+.login-contenedor {
+    justify-content: center !important;
+    display: flex !important;
+}
+
+.card-login {
+    margin-top: 100px !important;
+}
