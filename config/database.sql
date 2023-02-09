@@ -1,6 +1,7 @@
 CREATE TABLE Users (
 	userId varchar(200) PRIMARY KEY,
-	email varchar(30)
+	email varchar(30),
+    password LONGTEXT
 );
 
 CREATE TABLE Carreras (

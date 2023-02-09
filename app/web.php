@@ -15,4 +15,9 @@ $app->get('/foo', function (Request $request, Response $response, $args) {
 
 $app->get('/hola', 'App\Controllers\HolaController:index');
 
-$app->get('/Login', 'App\Controllers\HolaController:Login');
+// login 
+$app->get('/login', 'App\Controllers\HolaController:Login');
+$app->post('/start/singin', 'App\Controllers\LoginController:validateUser');
+
+// esta es para iniciar el super user
+$app->get('/init-system', 'App\Controllers\LoginController:initSystem');

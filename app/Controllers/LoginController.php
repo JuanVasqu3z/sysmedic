@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Controllers;
+
+use Psr\Container\ContainerInterface;
+use App\Models\User;
+use \Psr\Http\Message\ResponseInterface as Response;
+use \Psr\Http\Message\ServerRequestInterface as Request;
+
+class LoginController extends BaseController
+{
+
+    public function initSystem(Response $response)
+    {
+        $user = new User();
+        $user->email('admin@sysmedic.com');
+        $user->userId('admin-124');
+        $user->password(password_hash('12345678', PASSWORD_BCRYPT));
+        $user->create();
+
+        return $response;
+    }
+
+    public function validateUser(Request $request, Response $response)
+    {
+        $paramts = $request->getParsedBody();
+        $user = new User();
+        $user->email($paramts['email']);
+        $result = $user->findEmail();
+        if (count($result) > 0) {
+            if (password_verify($paramts['password'], $result[0]->password)) {
+                echo 'entro';
+                $response->withHeader('Location', '/?action=hola');
+            }
+            $response->withHeader('Location', '/?action=warning');
+        } else {
+            $response->withHeader('Location', '/?action=warning');
+        }
+        return $response->withHeader('Location', '/?action=warning');
+    }
+}

@@ -6,6 +6,7 @@ class User
 {
     private $userId;
     private $email;
+    private $password;
     private $table;
     private $conection;
 
@@ -25,14 +26,19 @@ class User
         $this->email = $value;
     }
 
+    public function password($value)
+    {
+        $this->password = $value;
+    }
 
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (userId, email) VALUES 
+            'INSERT INTO ' . $this->table . ' (userId, email,password) VALUES 
             (
                 "' . $this->userId . '",
                 "' . $this->email . '",
+                "' . $this->password . '"
             )'
         );
         $preparate->execute();
@@ -63,7 +69,16 @@ class User
             'SELECT * FROM ' . $this->table . ' WHERE userId="' . $this->userId . '"'
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function findEmail()
+    {
+        $preparate = $this->conection->prepare(
+            'SELECT * FROM ' . $this->table . ' WHERE email="' . $this->email . '"'
+        );
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function getAll()
