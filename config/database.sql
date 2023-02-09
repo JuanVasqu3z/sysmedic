@@ -1,3 +1,8 @@
+CREATE TABLE Users (
+	userId varchar(200) PRIMARY KEY,
+	email varchar(30)
+);
+
 CREATE TABLE Carreras (
 	IdCarrera varchar(200) PRIMARY KEY,
 	Nombre varchar(30)
@@ -24,7 +29,7 @@ CREATE TABLE Medicamentos (
 );
 
 CREATE TABLE Almacenes (
-	IdAlmacenes varchar(20) PRIMARY KEY,
+	IdAlmacen varchar(20) PRIMARY KEY,
 	Cantidad varchar(30),
     Nombre varchar(30),
     Peldaños varchar(30)
@@ -42,7 +47,7 @@ CREATE TABLE Personas (
     Apellido varchar(30),
     Direccion varchar(30),
     NumeroTelefono varchar(30),
-    Sexo varchar(30),
+    Sexo varchar(30)
 );
 
 CREATE TABLE Empleados (
@@ -50,17 +55,17 @@ CREATE TABLE Empleados (
     IdCargo varchar(30),
     IdDepa varchar(30),
     IdSede varchar(30),
-    FOREIGN KEY (IdCargo) REFERENCES Cargos (IdCargo) ON DELETE CASCADE
-    FOREIGN KEY (IdDepa) REFERENCES Departamentos (IdDepa) ON DELETE CASCADE
-    FOREIGN KEY (IdSede) REFERENCES IdSede (IdSede) ON DELETE CASCADE
+    FOREIGN KEY (IdCargo) REFERENCES Cargos (IdCargo) ON DELETE CASCADE,
+    FOREIGN KEY (IdDepa) REFERENCES Departamentos (IdDepa) ON DELETE CASCADE,
+    FOREIGN KEY (IdSede) REFERENCES Sedes (IdSede) ON DELETE CASCADE
 );
 
 CREATE TABLE Estudiantes (
 	IdEstudiantes varchar(20) PRIMARY KEY,
     IdCarrera varchar(30),
     IdSede varchar(30),
-    FOREIGN KEY (IdCarrera) REFERENCES Carreras (IdCarrera) ON DELETE CASCADE
-    FOREIGN KEY (IdSede) REFERENCES IdSede (IdSede) ON DELETE CASCADE
+    FOREIGN KEY (IdCarrera) REFERENCES Carreras (IdCarrera) ON DELETE CASCADE,
+    FOREIGN KEY (IdSede) REFERENCES Sedes (IdSede) ON DELETE CASCADE
 );
 
 CREATE TABLE Medicos (
@@ -93,8 +98,9 @@ CREATE TABLE AtencionesMedicas (
     Diagnostico varchar(20),
     Recipe varchar(20),
     Indicacciones varchar(60),
+    IdPersona varchar(100),
     FOREIGN KEY (IdAtencionP) REFERENCES AtencionesPrimarias (IdAtencionP) ON DELETE CASCADE,
-    FOREIGN KEY (IdPersona) REFERENCES IdMedico (Medicos) ON DELETE CASCADE
+    FOREIGN KEY (IdPersona) REFERENCES Medicos (IdMedico) ON DELETE CASCADE
 );
 
 CREATE TABLE EntregaDeMedicamentos (
@@ -104,8 +110,10 @@ CREATE TABLE EntregaDeMedicamentos (
     Cantidad varchar(20),
     Fecha varchar(20),
     IdPersonalDeApoyo varchar(60),
+    IdMedico varchar(100),
+    IdAtencionP varchar(100),
     FOREIGN KEY (IdAtencionP) REFERENCES AtencionesPrimarias (IdAtencionP) ON DELETE CASCADE,
-    FOREIGN KEY (IdPersona) REFERENCES IdMedico (Medicos) ON DELETE CASCADE
+    FOREIGN KEY (IdMedico) REFERENCES Medicos (IdMedico) ON DELETE CASCADE
 );
 
 CREATE TABLE Lotes (
@@ -115,8 +123,8 @@ CREATE TABLE Lotes (
     FechaVencimiento varchar(20),
     FechaExpedicion varchar(20),
     Total varchar(60),
-    IdMedicamento varchar(30),
+    Codigo varchar(30),
     IdAlmacen varchar(20),
-    FOREIGN KEY (IdMedicamento) REFERENCES Medicamentos (IdMedicamento) ON DELETE CASCADE,
+    FOREIGN KEY (Codigo) REFERENCES Medicamentos (Codigo) ON DELETE CASCADE,
     FOREIGN KEY (IdAlmacen) REFERENCES Almacenes (IdAlmacen) ON DELETE CASCADE
 );
