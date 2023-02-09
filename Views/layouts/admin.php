@@ -13,19 +13,19 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="<?= assets('/css/tempusdominus-bootstrap-4.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/tempusdominus-bootstrap-4.min.css') ?>">
     <!-- iCheck -->
-    <link rel="stylesheet" href="<?= assets('/css/icheck-bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/icheck-bootstrap.min.css') ?>">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="<?= assets('/css/jqvmap.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/jqvmap.min.css') ?>">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?= assets('/css/adminlte.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="<?= assets('/css/OverlayScrollbars.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/OverlayScrollbars.min.css') ?>">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="<?= assets('/css/daterangepicker.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/daterangepicker.css') ?>">
     <!-- summernote -->
-    <link rel="stylesheet" href="<?= assets('/css/summernote-bs4.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/summernote-bs4.min.css') ?>">
 
     
     <!-- Google Font: Source Sans Pro -->
@@ -74,25 +74,25 @@
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="<?= assets('/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= assets('js/bootstrap.bundle.min.js') ?>"></script>
 <!-- ChartJS -->
-<script src="<?= assets('/js/Chart.min.js') ?>"></script>
+<script src="<?= assets('js/Chart.min.js') ?>"></script>
 <!-- Sparkline -->
-<script src="<?= assets('/js/sparkline.js') ?>"></script>
+<script src="<?= assets('js/sparkline.js') ?>"></script>
 <!-- JQVMap -->
-<script src="<?= assets('/js/vmap.min.js') ?>"></script>
-<script src="<?= assets('/js/jquery.vmap.usa.js') ?>"></script>
+<script src="<?= assets('js/vmap.min.js') ?>"></script>
+<script src="<?= assets('js/jquery.vmap.usa.js') ?>"></script>
 <!-- jQuery Knob Chart -->
-<script src="<?= assets('/js/jquery.knob.min.js') ?>"></script>
+<script src="<?= assets('js/jquery.knob.min.js') ?>"></script>
 <!-- daterangepicker -->
-<script src="<?= assets('/js/moment.min.js') ?>"></script>
-<script src="<?= assets('/js/daterangepicker.js') ?>"></script>
+<script src="<?= assets('js/moment.min.js') ?>"></script>
+<script src="<?= assets('js/daterangepicker.js') ?>"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= assets('/js/tempusdominus-bootstrap-4.min.js') ?>"></script>
+<script src="<?= assets('js/tempusdominus-bootstrap-4.min.js') ?>"></script>
 <!-- Summernote -->
-<script src="<?= assets('/js/summernote-bs4.min.js') ?>"></script>
+<script src="<?= assets('js/summernote-bs4.min.js') ?>"></script>
 <!-- overlayScrollbars -->
-<script src="<?= assets('/js/jquery.overlayScrollbars.min.js') ?>"></script>
+<script src="<?= assets('js/jquery.overlayScrollbars.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?= assets('js/adminlte.js') ?>"></script>
 
