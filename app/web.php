@@ -14,3 +14,5 @@ $app->get('/foo', function (Request $request, Response $response, $args) {
 });
 
 $app->get('/hola', 'App\Controllers\HolaController:index');
+
+$app->get('/Login', 'App\Controllers\HolaController:Login');

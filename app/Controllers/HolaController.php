@@ -39,4 +39,10 @@ class HolaController extends BaseController
         echo $this->view->render('pages/Home');
         return $response;
     }
+
+    public function Login(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Login');
+        return $response;
+    }
 }
