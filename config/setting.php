@@ -8,8 +8,8 @@ define('ENV', [
 define('DB', [
     "gsdb"      => 'mysql',
     "host"      => '127.0.0.1',
-    "user"      => 'root',
-    "pass"      => 'doctor',
+    "user"      => 'superuser',
+    "pass"      => '4321',
     "name"      => 'sysmedic',
     'charset'   => 'utf8'
 ]);

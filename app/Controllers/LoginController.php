@@ -10,7 +10,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 class LoginController extends BaseController
 {
 
-    public function initSystem(Response $response)
+    public function initSystem()
     {
         $user = new User();
         $user->email('admin@sysmedic.com');
@@ -18,7 +18,7 @@ class LoginController extends BaseController
         $user->password(password_hash('12345678', PASSWORD_BCRYPT));
         $user->create();
 
-        return $response;
+        ///return $response;
     }
 
     public function validateUser(Request $request, Response $response)
@@ -32,8 +32,8 @@ class LoginController extends BaseController
                 echo 'entro';
                 return $response->withHeader('Location', './hola');
             }
-            return $response->withHeader('Location', '/hola'); //->withStatus(302);
             echo 'entro 0';
+            return $response->withHeader('Location', '/hola'); //->withStatus(302);
         } else {
             return $response->withHeader('Location', './?action=warning');
         }
