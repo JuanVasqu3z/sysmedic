@@ -1,66 +1,76 @@
 <?php $this->layout('layouts/admin') ?>
 
-  <div class="row jc">
-    <div class="col-md-10 mt-4">
-      <!-- Box Comment -->
-      <div class="card card-widget">
-        <div class="card-header">
-          <div class="user-block">
+<?php if (isset($_GET['action'])) : ?>
+  <?php if ($_GET['action'] == 'success') : ?>
+    <div class="alert alert-success" role="alert">
+      Registrado satisfactoriamente la consulta al paciente <?= $persona->Nombre ?> <?= $persona->Apellido ?>
+    </div>
+  <?php endif; ?>
+<?php endif; ?>
+
+<div class="row jc">
+  <div class="col-md-10 mt-4">
+    <!-- Box Comment -->
+    <div class="card card-widget">
+      <div class="card-header">
+        <div class="user-block">
+          <?php if (isset($persona)) : ?>
             <img class="img-circle" src="<?= assets('image/avatar.png') ?>" alt="User Image" id="imagen">
-            <span class="username text-primary" id="nombreCompleto">Juan de Jesus Vasquez Vasquez</span>
-              <div class="d-flex sub-nombre"> 
-                <small class="mr-2" id="tipo">Estudiante</small>
-                <small class="mr-2">de</small> 
-                <small class="" id="carrera">Informatica</small>
-              </div>
-          </div>
-          <!-- /.user-block -->
-          <div class="card-tools d-flex">
-            <input class="form-control mr-3" type="text" placeholder="Busqueda" name="CedulaPersona" id="CedulaPersona">
-            <button class="btn btn-primary mr-2"><i class="fas fa-search" onclick="Busqueda()"></i></button>
-          </div>
+            <span class="username text-primary" id="nombreCompleto"><?= $persona->Nombre ?> <?= $persona->Apellido ?></span>
+            <div class="d-flex sub-nombre">
+              <small class="mr-2" id="tipo">Estudiante</small>
+              <small class="mr-2">de</small>
+              <small class="" id="carrera">Informatica</small>
+            </div>
+          <?php endif; ?>
         </div>
-        <!-- /.card-header -->
+        <!-- /.user-block -->
+        <form action="/persona/search" method="GET" class="card-tools d-flex">
+          <input class="form-control mr-3" type="text" placeholder="Busqueda" name="CedulaPersona" id="CedulaPersona">
+          <button class="btn btn-primary mr-2" type="submit"><i class="fas fa-search" onclick="Busqueda()"></i></button>
+        </form>
+      </div>
+      <!-- /.card-header -->
+      <?php if (isset($persona)) : ?>
         <div class="card-body">
           <!-- post text -->
           <div class="d-flex form-fila mt-2 je">
             <div class="col-3">
               <small class="">Cedula</small>
-              <p class="" id="cedula">28250060</p>
+              <p class="" id="cedula"><?= $persona->Cedula ?></p>
             </div>
             <div class="col-4">
-              <small >Direccion</small>
-              <p class="" id="direccion">Brasil Sector 3 Calle 13 Casa 42</p>
+              <small>Direccion</small>
+              <p class="" id="direccion"><?= $persona->Direccion ?></p>
             </div>
             <div class="col-3">
-              <small >Numero Telefonico</small>
-              <p id="numerot">04129460194</p>
+              <small>Numero Telefonico</small>
+              <p id="numerot"><?= $persona->NumeroTelefono ?></p>
             </div>
           </div>
 
           <div class="d-flex mt-3 form-fila je">
             <div class="col-3">
-              <small class="" >Sexo</small>
-              <p class="" id="sexo">Hombre</p>
+              <small class="">Sexo</small>
+              <p class="" id="sexo"><?= $persona->Sexo ?></p>
             </div>
             <div class="col-4">
-              
+
             </div>
             <div class="col-3">
-              
+
             </div>
           </div>
-          <div class="d-flex jend mt-4">
-              <button class="btn btn-primary mx-2">Registrar</button>
-          </div>
         </div>
-      </div>
+      <?php endif; ?>
     </div>
   </div>
-  <!--form-->
+</div>
+<!--form-->
+<?php if (isset($persona)) : ?>
   <div class="row jc">
     <div class="col-md-10 mt-2">
-      <div class="card card-widget">
+      <form action="/atencion-primaria/save" method="POST" class="card card-widget">
         <div class="card-header">
           <h5 class="d-inline">Iniciar Consulta</h5>
         </div>
@@ -68,26 +78,28 @@
           <div class="d-flex form-fila">
             <div class="col-6">
               <label>Fecha</label>
-              <input class="form-control" type="date" placeholder="Default input">
+              <input class="form-control" name="date" type="date" placeholder="Default input">
             </div>
             <div class="col-6">
               <label>Hora</label>
-              <input class="form-control" type="time" placeholder="Default input">
+              <input class="form-control" name="time" type="time" placeholder="Default input">
             </div>
           </div>
+          <input type="hidden" name="persona_id" value="<?= $persona->IdPersona ?>">
           <div class="d-flex form-fila  mt-3">
             <div class="col">
               <div class="form-group">
                 <label>Motivo de la Consulta</label>
-                <textarea class="form-control text-descriccion" rows="3" placeholder="Descripcion ..."></textarea>
-              </div>  
+                <textarea class="form-control text-descriccion" name="description" rows="3" placeholder="Descripcion ..."></textarea>
+              </div>
             </div>
           </div>
           <div class="d-flex jend mt-1">
-              <button class="btn btn-primary">Iniciar Consulta</button>
+            <button class="btn btn-primary">Iniciar Consulta</button>
           </div>
         </div>
         <!-- /.card-body -->
-      </div>
+      </form>
     </div>
   </div>
+<?php endif; ?>

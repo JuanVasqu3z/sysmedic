@@ -17,7 +17,7 @@ class Persona
     public function __construct()
     {
         $this->conection = \App\Core\conection();
-        $this->table = 'Cargos';
+        $this->table = 'Personas';
     }
 
     public function idPersona($value)
@@ -53,6 +53,11 @@ class Persona
     public function sexo($value)
     {
         $this->sexo = $value;
+    }
+
+    public function getPrimaryKey()
+    {
+        return $this->idPersona;
     }
 
 
@@ -103,7 +108,7 @@ class Persona
             'SELECT * FROM ' . $this->table . ' WHERE IdPersona="' . $this->idPersona . '"'
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function getAll()
@@ -112,6 +117,14 @@ class Persona
             'SELECT * FROM ' . $this->table
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function buscarCedula()
+    {
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE Cedula=' . $this->cedula;
+        $preparate = $this->conection->prepare($sql);
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 }

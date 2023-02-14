@@ -3,10 +3,9 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-$app->get('/', 'App\Controllers\HolaController:index');
+$app->get('/', 'App\Controllers\PersonController:viewSearchPerson');
 
 //routes of Paciente
-$app->get('/ListaRegistro', 'App\Controllers\HolaController:ListaRegister');
 $app->get('/Paciente/AtencionMedica', 'App\Controllers\HolaController:AtencionMedica');
 $app->get('/Paciente/Control', 'App\Controllers\HolaController:ControlPaciente');
 
@@ -45,3 +44,13 @@ $app->post('/medicine/save', 'App\Controllers\MedicineController:guardarMedicina
 
 //Almacen
 $app->post('/almacen/save', 'App\Controllers\AlmacenController:guardarAlmacen');
+
+// personas
+$app->get('/persona/search', 'App\Controllers\PersonController:searchPerson');
+$app->post('/persona/save', 'App\Controllers\PersonController:registrarPersona');
+// ----- 
+$app->get('/persona/view/create', 'App\Controllers\PersonController:viewCreatePerson');
+
+// atencion primaria
+$app->post('/atencion-primaria/save', 'App\Controllers\AtencionPrimariaController:saveAtencionPrimaria');
+$app->get('/ListaRegistro', 'App\Controllers\AtencionPrimariaController:listaEspera');

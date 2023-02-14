@@ -30,7 +30,7 @@ CREATE TABLE Medicamentos (
 );
 
 CREATE TABLE Almacenes (
-    IdAlmacen int NOT NULL AUTO_INCREMENT,
+    IdAlmacen varchar(30) PRIMARY KEY,
 	Cantidad varchar(30),
     Nombre varchar(30),
     Peldaños varchar(30)
@@ -88,7 +88,7 @@ CREATE TABLE AtencionesPrimarias (
     Fecha varchar(20),
     Hora varchar(20),
     MotivoDeconsulta varchar(60),
-    FOREIGN KEY (IdPersonalDeApoyo) REFERENCES PersonalDeApoyo (IdPersona) ON DELETE CASCADE,
+    FOREIGN KEY (IdPersonalDeApoyo) REFERENCES PersonalDeApoyo (IdPersonalDeApoyo) ON DELETE CASCADE,
     FOREIGN KEY (IdPersona) REFERENCES Personas (IdPersona) ON DELETE CASCADE
 );
 

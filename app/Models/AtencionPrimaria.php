@@ -59,7 +59,7 @@ class AtencionPrimaria
                 "' . $this->idPersonadeApoyo . '",
                 "' . $this->fecha . '",
                 "' . $this->hora . '",
-                "' . $this->motivodeConsulta . '",
+                "' . $this->motivodeConsulta . '"
             )'
         );
         $preparate->execute();
@@ -100,9 +100,9 @@ class AtencionPrimaria
     public function getAll()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table
+            'SELECT * FROM ' . $this->table . ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona'
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 }
