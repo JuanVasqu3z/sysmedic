@@ -1,6 +1,19 @@
 <?php $this->layout('layouts/app') ?>
 
 <div class="login-contenedor">
+    <?php if (isset($_GET['permise'])) : ?>
+        <?php if ($_GET['permise'] == 'error') : ?>
+            <div class="alert alert-warning" role="alert">
+                No tiene permiso para acceder a esta pantalla
+            </div>
+        <?php endif; ?>
+        <?php if ($_GET['permise'] == 'true') : ?>
+            <div class="alert alert-warning" role="alert">
+                Usuario o contraseña incorrecta
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+
     <!-- /.login-logo -->
     <div class="card col-lg-4 col-md-5 card-login">
         <div class="card-header text-center">
