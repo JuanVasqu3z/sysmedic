@@ -59,7 +59,7 @@ class Medicamento
                 "' . $this->tipo . '",
                 "' . $this->presentacion . '",
                 "' . $this->unidad . '",
-                "' . $this->cantidad . '",
+                "' . $this->cantidad . '"
             )'
         );
         $preparate->execute();
@@ -75,8 +75,7 @@ class Medicamento
             Unidad  = "' . $this->unidad . '",
             Cantidad  = "' . $this->cantidad . '",
             WHERE Codigo = "' . $this->codigo . '"
-            '
-        );
+            ');
         $preparate->execute();
     }
 
@@ -103,6 +102,6 @@ class Medicamento
             'SELECT * FROM ' . $this->table
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 }

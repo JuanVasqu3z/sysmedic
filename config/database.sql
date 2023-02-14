@@ -30,7 +30,7 @@ CREATE TABLE Medicamentos (
 );
 
 CREATE TABLE Almacenes (
-	IdAlmacen varchar(20) PRIMARY KEY,
+    IdAlmacen int NOT NULL AUTO_INCREMENT,
 	Cantidad varchar(30),
     Nombre varchar(30),
     Peldaños varchar(30)

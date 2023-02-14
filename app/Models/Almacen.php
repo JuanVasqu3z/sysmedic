@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Almacen
+class Almacen   
 {
     private $idalmacen;
     private $cantidad;
@@ -40,13 +40,12 @@ class Almacen
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (IdAlmacen, Cantidad, Nombre, Peldaños) VALUES 
+            "INSERT INTO ".$this->table." (`IdAlmacen`, `Cantidad`, `Nombre`, `Peldanos`) VALUES 
             (
-                "' . $this->idalmacen . '",
-                "' . $this->cantidad . '",
-                "' . $this->nombre . '",
-                "' . $this->peldanos . '",
-            )'
+                '".$this->idalmacen."', 
+                '".$this->cantidad."', 
+                '".$this->nombre."', 
+                '".$this->peldanos."');"
         );
         $preparate->execute();
     }
@@ -87,6 +86,6 @@ class Almacen
             'SELECT * FROM ' . $this->table
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 }

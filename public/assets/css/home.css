@@ -1,0 +1,32 @@
+.jc {
+    justify-content: center;
+}
+
+.je {
+    justify-content: space-evenly;
+}
+
+.jend {
+    justify-content: end;
+}
+
+.jb {
+    justify-content: space-between;
+}
+
+.text-descriccion {
+    min-height: 90px !important;
+} 
+
+.home-descripcion {
+    width: 90%;
+
+}
+
+.list-table {
+    min-height: 340px;
+}
+
+.sub-nombre {
+    margin-left: 53px;
+}

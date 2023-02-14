@@ -9,7 +9,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?= assets('plugins/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/all.min.css') ?>">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= assets('css/fontawesome-free/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/fontawesome-free/css/fontawesome.css') ?>">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
@@ -39,15 +40,19 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="<?= assets('/css/icheck-bootstrap.min.css') ?>">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="<?= assets('/css/jqvmap.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/jqvmap.min.css') ?>">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?= assets('/css/adminlte.min.css') ?>">
+    <link rel="stylesheet" href="<?= assets('css/adminlte.min.css') ?>">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="<?= assets('/css/OverlayScrollbars.min.css') ?>">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="<?= assets('/css/daterangepicker.css') ?>">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css" href="<?= assets('/css/summernote-bs4.min.css') ?>">
+    <!--Home-->
+    <link rel="stylesheet" href="<?= assets('/css/home.css') ?>">
+    <!--Estilos-->
+    <link rel="stylesheet" href="<?= assets('/css/estilos.css') ?>">
 </head>
 
 <body>
@@ -55,8 +60,8 @@
         <?= $this->insert('sections/Header'); ?>
         <?= $this->insert('sections/sidebar'); ?>
 
-        <div class="content-wrapper">
-            <section class="content mt-4">
+        <div class="content-wrapper" style="height: auto;">
+            <section class="content">
                 <div class="container-fluid">
                     <?= $this->section('content') ?>
                 </div>
@@ -68,7 +73,7 @@
 <!-- jQuery -->
 <script src="<?= assets('js/jquery.min.js') ?>"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="<?= assets('jquery-ui.min.js') ?>"></script>
+<script src="<?= assets('js/jquery-ui.min.js') ?>"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
@@ -95,5 +100,7 @@
 <script src="<?= assets('js/jquery.overlayScrollbars.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?= assets('js/adminlte.js') ?>"></script>
+<!--Consumo Json-->
+<script src="<?= assets('js/ControllersPerson.js') ?>"></script>
 
 </html>

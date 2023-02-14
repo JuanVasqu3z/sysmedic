@@ -45,4 +45,69 @@ class HolaController extends BaseController
         echo $this->view->render('pages/Login');
         return $response;
     }
+
+    //Render Paciente
+
+    public function ListaRegister(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/ListaRegister');
+        return $response;
+    }
+
+    public function AtencionMedica(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Paciente/AtencionMedica');
+        return $response;
+    }
+
+    public function ControlPaciente(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Paciente/ControlPaciente');
+        return $response;
+    }
+
+    //Render Medicamento
+
+    public function RegisterMedicamentos(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Medicina/RegisterMedicamentos');
+        return $response;
+    }
+
+    public function ListaMedicamentos(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Medicina/ListaMedicamentos');
+        return $response;
+    }
+    
+    public function EntregaMedicamento(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/EntregaMedicamento');
+        return $response;
+    }
+
+    //Render Almacen
+
+    public function CrearAlmacen(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Almacen/CrearAlmacen');
+        return $response;
+    }
+
+    public function AlmacenGestion(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Almacen/AlmacenGestion');
+        return $response;
+    }
+
+    public function ControlLotes(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Almacen/ControlLotes');
+        return $response;
+    }
+    public function RegisterLote(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Almacen/RegisterLote');
+        return $response;
+    }
 }

@@ -1,5 +1,5 @@
 <!-- /.content-wrapper -->
-<footer class="main-footer">
+<!-- <footer class="main-footer">
 
 </footer>
 <!-- Control Sidebar -->
