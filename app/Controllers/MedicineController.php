@@ -11,7 +11,6 @@ class MedicineController extends BaseController
     public function guardarMedicina(Request $request, Response $response)
     {
         $dataPost = $request->getParsedBody();
-        echo var_dump($request->getParsedBody());
 
         $medicamento = new Medicamento();
         $medicamento->codigo($dataPost['codigo']);
@@ -21,11 +20,10 @@ class MedicineController extends BaseController
         $medicamento->unidad($dataPost['unidad']);
         $medicamento->cantidad($dataPost['cantidad']);
         $medicamento->create();
-        /*$conection = \App\Core\conection();
-        $execute = $conection->prepare("INSERT INTO `Medicamentos` (`Codigo`, `Nombre`, `Tipo`, `Presentancion`, `Unidad`, `Cantidad`) 
-             VALUES ('".$dataPost['codigo']."', 'Loperan', 'Analgesico', 'tableta', '15', '2')");
-        $execute->execute();*/
-        return $response;
+
+
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/Medicina/Lista');
     }
 
     public function listarMedicinas(Request $request,Response $response)

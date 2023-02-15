@@ -2,9 +2,12 @@
 
 <?php if (isset($_GET['action'])) : ?>
   <?php if ($_GET['action'] == 'success') : ?>
-    <div class="alert alert-success" role="alert">
-      Registrado satisfactoriamente la consulta al paciente <?= $persona->Nombre ?> <?= $persona->Apellido ?>
-    </div>
+    <div class="alert alert-success alert-dismissible fade show col-md-10" role="alert">
+            <strong>exito!</strong> Registrado satisfactoriamente la consulta al paciente
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
   <?php endif; ?>
 <?php endif; ?>
 
@@ -20,13 +23,13 @@
             <div class="d-flex sub-nombre">
               <small class="mr-2" id="tipo">Estudiante</small>
               <small class="mr-2">de</small>
-              <small class="" id="carrera">Informatica</small>
+              <small id="carrera">Informatica</small>
             </div>
           <?php endif; ?>
         </div>
         <!-- /.user-block -->
         <form action="/persona/search" method="GET" class="card-tools d-flex">
-          <input class="form-control mr-3" type="text" placeholder="Busqueda" name="CedulaPersona" id="CedulaPersona">
+          <input class="form-control mr-3" type="text" placeholder="Buscar por Cedula" name="CedulaPersona" id="CedulaPersona" required>
           <button class="btn btn-primary mr-2" type="submit"><i class="fas fa-search" onclick="Busqueda()"></i></button>
         </form>
       </div>
@@ -83,6 +86,12 @@
             <div class="col-6">
               <label>Hora</label>
               <input class="form-control" name="time" type="time" placeholder="Default input">
+            </div>
+          </div>
+          <div class="d-flex form-fila">
+            <div class="col-6">
+              <label>Hora</label>
+              <input class="form-control" name="" type="text" placeholder="Default input">
             </div>
           </div>
           <input type="hidden" name="persona_id" value="<?= $persona->IdPersona ?>">

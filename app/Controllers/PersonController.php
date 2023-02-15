@@ -7,7 +7,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use App\Models\Persona;
 
 class PersonController extends BaseController
-{
+{   //buscar en la api
     public function searchPerson(Request $request, Response $response)
     {
         if (isset($_GET['CedulaPersona'])) {
@@ -25,13 +25,13 @@ class PersonController extends BaseController
         }
         return $response->withHeader('Location', '/persona/view/create?resolve=warning');
     }
-
+    // crear persona
     public function viewCreatePerson(Request $request, Response $response)
     {
         echo $this->view->render('pages/persona/createPerson');
         return $response;
     }
-
+    //registra persona
     public function registrarPersona(Request $request, Response $response)
     {
         $paramts = $request->getParsedBody();
@@ -54,7 +54,7 @@ class PersonController extends BaseController
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/?action=warning&persona=' . $persona->getPrimaryKey());
     }
-
+    //ver buscar persona
     public function viewSearchPerson(Request $request, Response $response)
     {
         if (isset($_GET['persona'])) {
@@ -72,4 +72,7 @@ class PersonController extends BaseController
         echo $this->view->render('pages/Home');
         return $response;
     }
+
+ 
+
 }

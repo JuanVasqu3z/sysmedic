@@ -20,7 +20,8 @@ class AlmacenController extends BaseController
         $almacen->peldanos($dataPost['peldanos']);
         $almacen->create();
         $conection = \App\Core\conection();
-         return $response;
+         $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/Almacen/AlmacenGestion');
     }
 
     public function listarAlmacen(Request $request,Response $response)

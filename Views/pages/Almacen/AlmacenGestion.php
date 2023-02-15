@@ -2,6 +2,14 @@
 
     <div class="row jc">
         <div class="col-md-10 mt-4">
+        <?php if ($_GET['action'] == 'success') : ?>
+    <div class="alert alert-success alert-dismissible fade show col-md-10" role="alert">
+            <strong>exito!</strong> Registrado satisfactoriamente la consulta al paciente
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+  <?php endif; ?>
             <div class="card py-2">
                 <div class="card-header">
                     <h4 class="d-inline">Gestion de Almacen</h4>
@@ -31,7 +39,7 @@
                                     <td><?=$almacen->Peldanos?></td>
                                     <td><?=$almacen->Cantidad?></td>
                                     <td>
-                                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                                        <a href=""><i class="fa fa-regular fa-pen mr-2"></i></a>
                                         <a href=""><i class="fa fa-regular fa-trash text-danger mr-2"></i></a>
                                     </td>
                                 </tr>

@@ -12,7 +12,7 @@ class AtencionPrimariaController extends BaseController
     {
         $paramts = $request->getParsedBody();
         $atencionPrimaria = new AtencionPrimaria();
-        $atencionPrimaria->idAtencionp($paramts['persona_id'] . date('ydhms'));
+        $atencionPrimaria->idAtencionp($paramts['persona_id'] . date('1'));
         $atencionPrimaria->idPersona($paramts['persona_id']);
         $atencionPrimaria->idPersonadeApoyo('2825006009220223');
         $atencionPrimaria->fecha($paramts['date']);
