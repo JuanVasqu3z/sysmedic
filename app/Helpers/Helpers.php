@@ -13,3 +13,10 @@ function sessionValidate($sesion)
         header('Location:/login?permise=error');
     }
 }
+
+function closeSesion()
+{
+    $login = new App\Core\Sesion();
+    $login->sessionStart();
+    $login->destroySession();
+}

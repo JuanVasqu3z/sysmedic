@@ -57,6 +57,9 @@ class PersonController extends BaseController
     //ver buscar persona
     public function viewSearchPerson(Request $request, Response $response)
     {
+        sessionValidate('auth');
+        //closeSesion();
+
         if (isset($_GET['persona'])) {
             $persona = new Persona();
             $persona->idPersona($_GET['persona']);
@@ -72,7 +75,4 @@ class PersonController extends BaseController
         echo $this->view->render('pages/Home');
         return $response;
     }
-
- 
-
 }

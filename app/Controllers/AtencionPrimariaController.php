@@ -14,7 +14,7 @@ class AtencionPrimariaController extends BaseController
         $atencionPrimaria = new AtencionPrimaria();
         $atencionPrimaria->idAtencionp($paramts['persona_id'] . date('1'));
         $atencionPrimaria->idPersona($paramts['persona_id']);
-        $atencionPrimaria->idPersonadeApoyo('2825006009220223');
+        $atencionPrimaria->idPersonadeApoyo('2825006009220223'); // mira sin venguenza esto es estatico
         $atencionPrimaria->fecha($paramts['date']);
         $atencionPrimaria->hora($paramts['time']);
         $atencionPrimaria->motivodeConsulta($paramts['description']);
