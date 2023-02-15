@@ -2,12 +2,14 @@
 
 <?php if (isset($_GET['action'])) : ?>
   <?php if ($_GET['action'] == 'success') : ?>
-    <div class="alert alert-success alert-dismissible fade show col-md-10" role="alert">
-            <strong>exito!</strong> Registrado satisfactoriamente la consulta al paciente
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+    <div class="d-flex jc">
+      <div class="alert alert-success alert-dismissible fade show col-md-10" role="alert">
+        <strong>exito!</strong> Registrado satisfactoriamente la consulta al paciente
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
   <?php endif; ?>
 <?php endif; ?>
 
@@ -86,12 +88,6 @@
             <div class="col-6">
               <label>Hora</label>
               <input class="form-control" name="time" type="time" placeholder="Default input">
-            </div>
-          </div>
-          <div class="d-flex form-fila">
-            <div class="col-6">
-              <label>Hora</label>
-              <input class="form-control" name="" type="text" placeholder="Default input">
             </div>
           </div>
           <input type="hidden" name="persona_id" value="<?= $persona->IdPersona ?>">
