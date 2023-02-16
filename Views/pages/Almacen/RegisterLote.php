@@ -3,7 +3,7 @@
     <!--form-->
     <div class="row jc">
         <div class="col-md-10 mt-4">
-            <div class="card card-widget py-2">
+            <div class="card card-widget p-3">
                 <div class="card-header">
                     <h4 class="d-inline">Registro de Lote</h4>
                 </div>

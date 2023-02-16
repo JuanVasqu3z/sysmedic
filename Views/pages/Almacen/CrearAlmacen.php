@@ -3,7 +3,7 @@
     <!--form-->
     <div class="row jc">
         <div class="col-md-10 mt-4">
-            <form class="card card-widget py-2" action="/almacen/save" method="POST">
+            <form class="card card-widget p-3" action="/almacen/save" method="POST">
                 <div class="card-header">
                     <h4 class="d-inline">Crear Almacen</h4>
                 </div>

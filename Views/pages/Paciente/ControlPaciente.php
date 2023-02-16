@@ -1,10 +1,10 @@
 <?php $this->layout('layouts/admin') ?>
 
     <div class="row jc">
-        <div class="col-md-10 mt-4">
+        <form class="col-md-10 mt-4">
             <div class="card p-3">
               <div class="card-header">
-                <h3 class="d-inline">Registro general de pacientes</h3>
+                <h4 class="d-inline">Control de Pacientes</h4>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -26,8 +26,8 @@
                       <th>Cedula</th>
                       <th>Nombre</th>
                       <th>Doctor</th>
-                      <th>Fecha</th>
-                      <th>Hora</th>
+                      <th>Visitas</th>
+                      <th>Accion</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -35,29 +35,41 @@
                       <td>28250060</td>
                       <td>Barbara Guerra</td>
                       <td>Juan Vasquez</td>
-                      <td>11-7-2014</td>
-                      <td>02:14 AM</td>
+                      <td>6</td>
+                      <td>
+                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                      </td>
                     </tr>
                     <tr>
                       <td>14419103</td>
                       <td>Liduvina Vasquez</td>
                       <td>Juan Vasquez</td>
-                      <td>11-7-2014</td>
-                      <td>09:40 AM</td>
+                      <td>6</td>
+                      <td>
+                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                      </td>
                     </tr>
                     <tr>
                       <td>14419103</td>
                       <td>Liduvina Vasquez</td>
                       <td>Juan Vasquez</td>
-                      <td>11-7-2014</td>
-                      <td>09:40 AM</td>
+                      <td>6</td>
+                      <td>
+                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                      </td>
                     </tr>
                     <tr>
                       <td>14419103</td>
                       <td>Liduvina Vasquez</td>
                       <td>Juan Vasquez</td>
-                      <td>11-7-2014</td>
-                      <td>09:40 AM</td>
+                      <td>6</td>
+                      <td>
+                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -65,6 +77,6 @@
               <!-- /.card-body -->
             </div>
         </div>
-    </div>
+    </form>
 
 </div>

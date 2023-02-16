@@ -2,9 +2,9 @@
     <!--form-->
     <div class="row jc">
         <div class="col-md-10 mt-4">
-            <div class="card card-widget py-2">
+            <div class="card card-widget p-3">
                 <div class="card-header">
-                    <h3 class="d-inline">Atencion Medica</h3>
+                    <h4 class="d-inline">Atencion Medica</h4>
                 </div>
                 <div class="card-body">
                     <div class="d-flex jb fila-form">

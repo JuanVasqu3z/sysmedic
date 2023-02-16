@@ -2,15 +2,17 @@
 
     <div class="row jc">
         <div class="col-md-10 mt-4">
-        <?php if ($_GET['action'] == 'success') : ?>
-    <div class="alert alert-success alert-dismissible fade show col-md-10" role="alert">
-            <strong>exito!</strong> Registrado satisfactoriamente la consulta al paciente
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-  <?php endif; ?>
-            <div class="card py-2">
+            <?php if (isset($_GET['permise'])) : ?>
+                <?php if ($_GET['action'] == 'success') : ?>
+                    <div class="alert alert-success alert-dismissible fade show col-md-10" role="alert">
+                        <strong>exito!</strong> Registrado satisfactoriamente la consulta al paciente
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+            <div class="card p-3">
                 <div class="card-header">
                     <h4 class="d-inline">Gestion de Almacen</h4>
                     <div class="card-tools">
