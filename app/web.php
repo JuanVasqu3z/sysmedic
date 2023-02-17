@@ -8,6 +8,8 @@ $app->get('/', 'App\Controllers\PersonController:viewSearchPerson');
 //routes of Paciente
 $app->get('/Paciente/AtencionMedica', 'App\Controllers\HolaController:AtencionMedica');
 $app->get('/Paciente/Control', 'App\Controllers\HolaController:ControlPaciente');
+$app->get('/Paciente/Detalle', 'App\Controllers\HolaController:DetallePaciente');
+$app->get('/Paciente/Detalle/Detalle', 'App\Controllers\HolaController:DetalleDelDetalle');
 
 //routes of medicina
 $app->get('/Medicina/Register', 'App\Controllers\HolaController:RegisterMedicamentos');

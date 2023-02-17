@@ -66,6 +66,18 @@ class HolaController extends BaseController
         return $response;
     }
 
+    public function DetallePaciente(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Paciente/DetallePaciente');
+        return $response;
+    }
+
+    public function DetalleDelDetalle(Request $request, Response $response, $args)
+    {
+        echo $this->view->render('pages/Paciente/DetalleDelDetalle');
+        return $response;
+    }
+
     //Render Medicamento
 
     public function RegisterMedicamentos(Request $request, Response $response, $args)

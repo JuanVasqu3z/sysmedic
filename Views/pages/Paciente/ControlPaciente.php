@@ -37,8 +37,8 @@
                       <td>Juan Vasquez</td>
                       <td>6</td>
                       <td>
-                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
-                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                        <a href=""><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
+                        <a href=""><a href=""><i class="fa fa-regular fa-trash text-danger"></i></a></a>
                       </td>
                     </tr>
                     <tr>
@@ -47,8 +47,8 @@
                       <td>Juan Vasquez</td>
                       <td>6</td>
                       <td>
-                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
-                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                        <a href=""><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
+                        <a href=""><a href=""><i class="fa fa-regular fa-trash text-danger"></i></a></a>
                       </td>
                     </tr>
                     <tr>
@@ -57,8 +57,8 @@
                       <td>Juan Vasquez</td>
                       <td>6</td>
                       <td>
-                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
-                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                        <a href=""><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
+                        <a href=""><a href=""><i class="fa fa-regular fa-trash text-danger"></i></a></a>
                       </td>
                     </tr>
                     <tr>
@@ -67,8 +67,8 @@
                       <td>Juan Vasquez</td>
                       <td>6</td>
                       <td>
-                        <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
-                        <a href=""><i class="fa-solid fa-eye"></i></a>
+                        <a href=""><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
+                        <a href=""><a href=""><i class="fa fa-regular fa-trash text-danger"></i></a></a>
                       </td>
                     </tr>
                   </tbody>
@@ -78,5 +78,6 @@
             </div>
         </div>
     </form>
+  </div>
 
 </div>

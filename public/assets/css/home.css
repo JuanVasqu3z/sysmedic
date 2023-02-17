@@ -30,3 +30,7 @@
 .sub-nombre {
     margin-left: 53px;
 }
+
+.bordT {
+    border-top: solid 1px #e0e0e0;
+}
