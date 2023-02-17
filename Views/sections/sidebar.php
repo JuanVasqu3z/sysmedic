@@ -38,12 +38,6 @@
                           </p>
                       </a>
                   </li>
-                  <li class="nav-item">
-                      <a href="/Medicina/Entrega" class="nav-link">
-                          <i class="fa fa-sharp fa-regular fa-capsules mr-1"></i>
-                          <p>Entrega de Medicamentos</p>
-                      </a>
-                  </li>
 
                   <li class="nav-item">
                       <a href="#" class="nav-link">
