@@ -10,6 +10,7 @@ class AtencionPrimaria
     private $fecha;
     private $hora;
     private $motivodeConsulta;
+    private $medicoId;
     private $conection;
     private $table;
 
@@ -49,14 +50,19 @@ class AtencionPrimaria
         $this->motivodeConsulta = $value;
     }
 
+    public function medicoId($value)
+    {
+        $this->medicoId = $value;
+    }
+
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (IdAtencionP, IdPersona, IdPersonalDeApoyo, Fecha, Hora, MotivoDeconsulta) VALUES 
+            'INSERT INTO ' . $this->table . ' (IdAtencionP, IdPersona, medicoId, Fecha, Hora, MotivoDeconsulta) VALUES 
             (
                 "' . $this->idAtencionp . '",
                 "' . $this->idPersona . '",
-                "' . $this->idPersonadeApoyo . '",
+                "' . $this->medicoId . '",
                 "' . $this->fecha . '",
                 "' . $this->hora . '",
                 "' . $this->motivodeConsulta . '"

@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Models\Persona;
+use App\Models\Medico;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use App\Core\Sesion;
@@ -11,12 +13,30 @@ class LoginController extends BaseController
 {
     public function initSystem(Request $request, Response $response)
     {
+        $person = new Persona();
+        $person->idPersona('origin-123');
+        $person->cedula('123');
+        $person->nombre('Sherman');
+        $person->apellido('Santa Cruz');
+        $person->direccion('Cancamure');
+        $person->numeroTelefono('412198');
+        $person->sexo('Masculino');
+        $person->create();
+        // user admin
         $user = new User();
         $user->email('admin@sysmedic.com');
         $user->userId('admin-124');
         $user->password(password_hash('12345678', PASSWORD_BCRYPT));
         $user->rolId('123-admin');
+        $user->personId('origin-123');
         $user->create();
+        // medico 
+        $medico = new Medico();
+        $medico->idMedico('medico-123');
+        $medico->idPersona('origin-123');
+        $medico->numeroDeColegio('1232');
+        $medico->create();
+
         return $response;
     }
 

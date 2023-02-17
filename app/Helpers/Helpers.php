@@ -20,3 +20,20 @@ function closeSesion()
     $login->sessionStart();
     $login->destroySession();
 }
+
+function Auth()
+{
+    $login = new App\Core\Sesion();
+    if (isset($_SESSION['globalUser'])) {
+        if (!session_status() == 1) {
+            $login->sessionStart();
+        }
+        if ($login->verifySession('auth')) {
+            $user = new App\Models\User();
+            $user->userId($_SESSION['globalUser']);
+            $userCurrent = $user->find();
+            return $userCurrent[0];
+        }
+    }
+    return null;
+}

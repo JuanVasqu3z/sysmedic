@@ -3,11 +3,23 @@ CREATE TABLE Roles (
 	name varchar(30)
 );
 
+CREATE TABLE Personas (
+	IdPersona varchar(255) PRIMARY KEY,
+	Cedula varchar(255),
+    Nombre varchar(255),
+    Apellido varchar(255),
+    Direccion TEXT,
+    NumeroTelefono varchar(255),
+    Sexo varchar(50)
+);
+
 CREATE TABLE Users (
 	userId varchar(200) PRIMARY KEY,
 	email varchar(30),
     password LONGTEXT,
     rolId varchar(200),
+    personId varchar(255),
+    FOREIGN KEY (personId) REFERENCES Personas (IdPersona) ON DELETE CASCADE,
     FOREIGN KEY (rolId) REFERENCES Roles (rolId) ON DELETE CASCADE
 );
 
@@ -27,16 +39,6 @@ CREATE TABLE Almacenes (
     Peldanos varchar(255)
 );
 
-CREATE TABLE Personas (
-	IdPersona varchar(255) PRIMARY KEY,
-	Cedula varchar(255),
-    Nombre varchar(255),
-    Apellido varchar(255),
-    Direccion TEXT,
-    NumeroTelefono varchar(255),
-    Sexo varchar(50)
-);
-
 CREATE TABLE Medicos (
 	IdMedico varchar(255) PRIMARY KEY,
     IdPersona varchar(255),
@@ -47,12 +49,14 @@ CREATE TABLE Medicos (
 CREATE TABLE AtencionesPrimarias (
 	IdAtencionP varchar(255) PRIMARY KEY,
     IdPersona varchar(255),
+    medicoId varchar(255),
     atendido boolean default 0,
     enEspera boolean default 1,
     Fecha Date,
     Hora Time ,
     MotivoDeconsulta TEXT,
-    FOREIGN KEY (IdPersona) REFERENCES Personas (IdPersona) ON DELETE CASCADE
+    FOREIGN KEY (IdPersona) REFERENCES Personas (IdPersona) ON DELETE CASCADE,
+    FOREIGN KEY (medicoId) REFERENCES Personas (IdPersona) ON DELETE CASCADE
 );
 
 CREATE TABLE AtencionesMedicas (

@@ -13,7 +13,7 @@ class Medico
     public function __construct()
     {
         $this->conection = \App\Core\conection();
-        $this->table = 'Cargos';
+        $this->table = 'Medicos';
     }
 
     public function idMedico($value)
@@ -38,7 +38,7 @@ class Medico
             (
                 "' . $this->idMedico . '",
                 "' . $this->idPersona . '",
-                "' . $this->numeroDeColegio . '",
+                "' . $this->numeroDeColegio . '"
             )'
         );
         $preparate->execute();

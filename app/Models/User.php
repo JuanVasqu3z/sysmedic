@@ -8,6 +8,7 @@ class User
     private $email;
     private $password;
     private $rolId;
+    private $personId;
     private $table;
     private $conection;
 
@@ -20,6 +21,11 @@ class User
     public function userId($value)
     {
         $this->userId = $value;
+    }
+
+    public function personId($value)
+    {
+        $this->personId = $value;
     }
 
     public function email($value)
@@ -40,12 +46,13 @@ class User
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (userId, email,password,rolId) VALUES 
+            'INSERT INTO ' . $this->table . ' (userId, email,password,rolId,personId) VALUES 
             (
                 "' . $this->userId . '",
                 "' . $this->email . '",
                 "' . $this->password . '",
-                "' . $this->rolId . '"
+                "' . $this->rolId . '",
+                "' . $this->personId . '"
             )'
         );
         $preparate->execute();
@@ -73,7 +80,7 @@ class User
     public function find()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' WHERE userId="' . $this->userId . '"'
+            'SELECT * FROM ' . $this->table . ' INNER JOIN Personas ON Personas.IdPersona=Users.personId INNER JOIN Medicos ON Medicos.IdPersona=Personas.IdPersona INNER JOIN Roles ON Roles.rolId=Users.rolId WHERE Users.userId="' . $this->userId . '"'
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);

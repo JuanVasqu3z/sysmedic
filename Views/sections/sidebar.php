@@ -12,8 +12,9 @@
               <div class="image">
                   <img src="<?= assets('image/avatar4.png') ?>" class="img-circle elevation-2" alt="User Image">
               </div>
+              <?php $user = Auth(); ?>
               <div class="info">
-                  <a href="" class="d-block">Sherman Santa Cruz</a>
+                  <a href="" class="d-block"><?= $user->Nombre ?> <?= $user->Apellido ?></a>
               </div>
           </div>
 
