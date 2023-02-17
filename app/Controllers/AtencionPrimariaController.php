@@ -11,10 +11,12 @@ class AtencionPrimariaController extends BaseController
 {
     public function saveAtencionPrimaria(Request $request, Response $response)
     {
+        $sesionUser = new Sesion();
+        $sesionUser->sessionStart();
+        // user currente
         $userCurrent = Auth();
         if (is_null($userCurrent)) {
-            $sesionUser = new Sesion();
-            $sesionUser->sessionStart();
+
             if ($sesionUser->verifySession('auth')) {
                 $sesionUser->destroySession();
             }
