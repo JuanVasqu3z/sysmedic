@@ -50,6 +50,7 @@ $app->post('/almacen/save', 'App\Controllers\AlmacenController:guardarAlmacen');
 // personas
 $app->get('/persona/search', 'App\Controllers\PersonController:searchPerson');
 $app->post('/persona/save', 'App\Controllers\PersonController:registrarPersona');
+$app->get('/persona/api/save', 'App\Controllers\PersonController:createPersonApi');
 // ----- 
 $app->get('/persona/view/create', 'App\Controllers\PersonController:viewCreatePerson');
 

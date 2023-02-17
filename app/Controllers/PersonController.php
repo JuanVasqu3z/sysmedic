@@ -35,6 +35,8 @@ class PersonController extends BaseController
     public function registrarPersona(Request $request, Response $response)
     {
         $paramts = $request->getParsedBody();
+        echo var_dump($_POST);
+        die();
         $persona = new Persona();
         $persona->cedula($paramts['cedula']);
         $personaMatch = $persona->buscarCedula();
@@ -54,6 +56,27 @@ class PersonController extends BaseController
         $response = $response->withStatus(302);
         return $response->withHeader('Location', '/?action=warning&persona=' . $persona->getPrimaryKey());
     }
+
+    public function createPersonApi(Request $request, Response $response)
+    {
+        $paramts = $_GET;
+        $persona = new Persona();
+        $persona->cedula($paramts['cedula']);
+        $personaMatch = $persona->buscarCedula();
+        if (count($personaMatch) > 0) {
+            return json_encode(['status' => 400, 'message' => 'cedula ya existe']);
+        }
+        $persona->idPersona($paramts['cedula'] . date('hsmy'));
+        $persona->cedula($paramts['cedula']);
+        $persona->nombre($paramts['nombre']);
+        $persona->apellido($paramts['apellido']);
+        $persona->direccion($paramts['direccion']);
+        $persona->numeroTelefono($paramts['telefono']);
+        $persona->sexo($paramts['sexo']);
+        $persona->create();
+        return $response;
+    }
+
     //ver buscar persona
     public function viewSearchPerson(Request $request, Response $response)
     {
@@ -69,6 +92,17 @@ class PersonController extends BaseController
             }
 
             echo $this->view->render('pages/Home', ['persona' => $personaMatch[0]]);
+            return $response;
+        }
+        if (isset($_GET['cedula'])) {
+            $persona = new Persona();
+            $persona->cedula($_GET['cedula']);
+            $responsePersona = $persona->buscarCedula();
+            if (count($responsePersona) == 0) {
+                echo $this->view->render('pages/Home');
+                return $response;
+            }
+            echo $this->view->render('pages/Home', ['persona' => $responsePersona[0]]);
             return $response;
         }
         echo $this->view->render('pages/Home');
