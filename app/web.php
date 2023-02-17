@@ -18,7 +18,7 @@ $app->get('/Medicina/Lista', 'App\Controllers\MedicineController:listarMedicinas
 
 // routes of Almacen
 $app->get('/Almacen/Register', 'App\Controllers\LoteController:viewRegisterLote');
-$app->get('/Almacen/ControlLotes', 'App\Controllers\HolaController:ControlLotes');
+$app->get('/Almacen/ControlLotes', 'App\Controllers\LoteController:viewControlLotes');
 $app->get('/Almacen/AlmacenGestion', 'App\Controllers\AlmacenController:listarAlmacen');
 $app->get('/Almacen/Crear', 'App\Controllers\HolaController:CrearAlmacen');
 
@@ -44,7 +44,6 @@ $app->get('/init-system', 'App\Controllers\LoginController:initSystem');
 // medicina
 $app->post('/medicine/save', 'App\Controllers\MedicineController:guardarMedicina');
 
-
 //Almacen
 $app->post('/almacen/save', 'App\Controllers\AlmacenController:guardarAlmacen');
 
@@ -57,3 +56,6 @@ $app->get('/persona/view/create', 'App\Controllers\PersonController:viewCreatePe
 // atencion primaria
 $app->post('/atencion-primaria/save', 'App\Controllers\AtencionPrimariaController:saveAtencionPrimaria');
 $app->get('/ListaRegistro', 'App\Controllers\AtencionPrimariaController:listaEspera');
+
+// lotes
+$app->post('/lote/save', 'App\Controllers\LoteController:saveLote');

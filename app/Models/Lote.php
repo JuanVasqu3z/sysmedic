@@ -7,7 +7,7 @@ use App\Core\conection;
 class Lote
 {
     private $idlote;
-    private $atencionMedica;
+    private $cantidad;
     private $fechaIngreso;
     private $fechaVencimiento;
     private $fechaExpedicion;
@@ -28,9 +28,9 @@ class Lote
         $this->idlote = $value;
     }
 
-    public function atencionMedica($value)
+    public function cantidad($value)
     {
-        $this->atencionMedica = $value;
+        $this->cantidad = $value;
     }
 
     public function fechaIngreso($value)
@@ -66,16 +66,15 @@ class Lote
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (IdLote, AtencionMedica, FechaIngreso, FechaVencimiento, FechaExpedicion, Total, Codigo, IdAlmacen) VALUES 
+            'INSERT INTO ' . $this->table . ' ( Cantidad , FechaIngreso, FechaVencimiento, FechaExpedicion, Total, Codigo, IdAlmacen) VALUES 
             (
-                "' . $this->idlote . '",
-                "' . $this->atencionMedica . '",
+                "' . $this->cantidad . '",
                 "' . $this->fechaIngreso . '",
                 "' . $this->fechaVencimiento . '",
                 "' . $this->fechaExpedicion . '",
                 "' . $this->total . '",
                 "' . $this->codigo . '",
-                "' . $this->idAlmacen . '",
+                "' . $this->idAlmacen . '"
             )'
         );
         $preparate->execute();
@@ -85,7 +84,7 @@ class Lote
     {
         $preparate = $this->conection->prepare(
             'UPDATE ' . $this->table . ' SET 
-            AtencionMedica  = "' . $this->atencionMedica . '",
+            Cantidad  = "' . $this->cantidad . '",
             FechaIngreso  = "' . $this->fechaIngreso . '",
             FechaVencimiento  = "' . $this->fechaVencimiento . '",
             FechaExpedicion  = "' . $this->fechaExpedicion . '",
@@ -118,9 +117,28 @@ class Lote
     public function getAll()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table
+            'SELECT 
+            Lotes.IdLote,
+            Lotes.Cantidad,
+            Lotes.FechaIngreso,
+            Lotes.FechaVencimiento,
+            Lotes.FechaExpedicion,
+            Lotes.Total,
+            Lotes.Codigo,
+            Lotes.IdAlmacen,
+            Medicamentos.Codigo,
+            Medicamentos.Nombre as medicaNombre,
+            Medicamentos.Tipo,
+            Medicamentos.Presentancion,
+            Medicamentos.Unidad,
+            Medicamentos.Cantidad,
+            Almacenes.IdAlmacen,
+            Almacenes.Cantidad,
+            Almacenes.Nombre as almacenNombre,
+            Almacenes.Peldanos
+            FROM ' . $this->table . ' INNER JOIN Medicamentos INNER JOIN Almacenes'
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 }

@@ -7,7 +7,7 @@
             <div class="card-header">
                 <h4 class="d-inline">Registro de Lote</h4>
             </div>
-            <div class="card-body">
+            <form action="/lote/save" method="POST" class="card-body">
                 <div class="d-flex jb fila-form mb-4">
                     <div class="col-6">
                         <label>Almacen</label>
@@ -19,39 +19,43 @@
                     </div>
                     <div class="col-6">
                         <label>Medicamento</label>
-                        <input class="form-control" type="text" placeholder="Default input">
+                        <select class="form-control" name="medicamento_id" id="medicamento_id">
+                            <?php foreach ($medicamentos as $medicamento) : ?>
+                                <option value="<?= $medicamento->Codigo  ?>"><?= $medicamento->Nombre ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
                 <div class="d-flex jb fila-form mb-4">
                     <div class="col-6">
                         <label>Fecha de Ingreso</label>
-                        <input class="form-control" type="text" placeholder="Default input">
+                        <input class="form-control" type="date" name="date_input" placeholder="Default input">
                     </div>
                     <div class="col-6">
                         <label>Fecha de Vencimiento</label>
-                        <input class="form-control" type="text" placeholder="Default input">
+                        <input class="form-control" type="date" name="date_due" placeholder="Default input">
                     </div>
                 </div>
                 <div class="d-flex jb fila-form mb-4">
                     <div class="col-6">
                         <label>Fecha de Expedicion</label>
-                        <input class="form-control" type="text" placeholder="Default input">
+                        <input class="form-control" type="date" name="date_exp" placeholder="Default input">
                     </div>
                     <div class="col-6">
                         <label>Cantidad</label>
-                        <input class="form-control" type="text" placeholder="Default input">
+                        <input class="form-control" type="number" name="cantidad" placeholder="Default input">
                     </div>
                 </div>
                 <div class="d-flex jb fila-form">
                     <div class="col-6">
                         <label>Total</label>
-                        <input class="form-control" type="text" placeholder="Default input">
+                        <input class="form-control" type="number" name="total" placeholder="Default input">
                     </div>
                 </div>
                 <div class="d-flex jend mt-4">
                     <button class="btn btn-primary">Registrar</button>
                 </div>
-            </div>
+            </form>
             <!-- /.card-body -->
         </div>
     </div>
