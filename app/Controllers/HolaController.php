@@ -56,6 +56,7 @@ class HolaController extends BaseController
 
     public function AtencionMedica(Request $request, Response $response, $args)
     {
+        sessionValidate('auth');
         echo $this->view->render('pages/Paciente/AtencionMedica');
         return $response;
     }
@@ -67,9 +68,9 @@ class HolaController extends BaseController
     }
 
     //Render Medicamento
-
     public function RegisterMedicamentos(Request $request, Response $response, $args)
     {
+        sessionValidate('auth');
         echo $this->view->render('pages/Medicina/RegisterMedicamentos');
         return $response;
     }
@@ -79,7 +80,7 @@ class HolaController extends BaseController
         echo $this->view->render('pages/Medicina/ListaMedicamentos');
         return $response;
     }
-    
+
     public function EntregaMedicamento(Request $request, Response $response, $args)
     {
         echo $this->view->render('pages/EntregaMedicamento');

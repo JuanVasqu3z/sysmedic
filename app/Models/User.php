@@ -7,6 +7,7 @@ class User
     private $userId;
     private $email;
     private $password;
+    private $rolId;
     private $table;
     private $conection;
 
@@ -31,14 +32,20 @@ class User
         $this->password = $value;
     }
 
+    public function rolId($value)
+    {
+        $this->rolId = $value;
+    }
+
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (userId, email,password) VALUES 
+            'INSERT INTO ' . $this->table . ' (userId, email,password,rolId) VALUES 
             (
                 "' . $this->userId . '",
                 "' . $this->email . '",
-                "' . $this->password . '"
+                "' . $this->password . '",
+                "' . $this->rolId . '"
             )'
         );
         $preparate->execute();

@@ -26,6 +26,7 @@ class AtencionPrimariaController extends BaseController
 
     public function listaEspera(Request $request, Response $response)
     {
+        sessionValidate('auth');
         $atencionPrimaria = new AtencionPrimaria();
         $listaEspera = $atencionPrimaria->getAll();
         echo $this->view->render('pages/ListaRegister', ['listaEspera' => $listaEspera]);

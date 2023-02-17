@@ -26,11 +26,12 @@ class MedicineController extends BaseController
         return $response->withHeader('Location', '/Medicina/Lista');
     }
 
-    public function listarMedicinas(Request $request,Response $response)
+    public function listarMedicinas(Request $request, Response $response)
     {
+        sessionValidate('auth');
         $medicamento = new Medicamento();
         $arrayMedicamentos = $medicamento->getAll();
-        echo $this->view->render('pages/Medicina/ListaMedicamentos',['medicamentos'=>$arrayMedicamentos]);
+        echo $this->view->render('pages/Medicina/ListaMedicamentos', ['medicamentos' => $arrayMedicamentos]);
         return $response;
     }
 }

@@ -17,43 +17,43 @@
               </div>
           </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu-open">
-                    <a href="/" class="nav-link">
-                        <i class="fa fa-home fa-house-blank mr-1"></i>
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                  <li class="nav-item menu-open">
+                      <a href="/" class="nav-link">
+                          <i class="fa fa-home fa-house-blank mr-1"></i>
                           <p>
                               Inicio
-                              
+
                           </p>
                       </a>
                   </li>
                   <li class="nav-item">
                       <a href="/ListaRegistro" class="nav-link">
-                        <i class="fa fa-sharp fa-regular fa-list mr-2"></i>
-                        <p>
-                            Lista de Espera
-                        </p>
+                          <i class="fa fa-sharp fa-regular fa-list mr-2"></i>
+                          <p>
+                              Lista de Espera
+                          </p>
                       </a>
                   </li>
-                    <li class="nav-item">
-                        <a href="/Medicina/Entrega" class="nav-link">
-                        <i class="fa fa-sharp fa-regular fa-capsules mr-1"></i>
-                            <p>Entrega de Medicamentos</p>
-                        </a>
-                    </li>
+                  <li class="nav-item">
+                      <a href="/Medicina/Entrega" class="nav-link">
+                          <i class="fa fa-sharp fa-regular fa-capsules mr-1"></i>
+                          <p>Entrega de Medicamentos</p>
+                      </a>
+                  </li>
 
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                        <i class="fa fa-sharp fa-regular fa-bed mr-1"></i>
+                          <i class="fa fa-sharp fa-regular fa-bed mr-1"></i>
                           <p>
                               Paciente
                               <i class="right fas fa-angle-left"></i>
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
-                        <li class="nav-item">
+                          <li class="nav-item">
                               <a href="/Paciente/AtencionMedica" class="nav-link">
                                   <p class="ml-4">Atencion Medica</p>
                               </a>
@@ -70,14 +70,14 @@
                           </li> -->
                       </ul>
                   </li>
-                  
+
                   <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fa fa-sharp fa-regular fa-syringe mr-1"></i>
-                            <p>
-                                Medicina
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                      <a href="#" class="nav-link">
+                          <i class="fa fa-sharp fa-regular fa-syringe mr-1"></i>
+                          <p>
+                              Medicina
+                              <i class="right fas fa-angle-left"></i>
+                          </p>
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
@@ -95,7 +95,7 @@
 
                   <li class="nav-item">
                       <a href="#" class="nav-link">
-                      <i class="fa fa-light fa-box mr-1"></i>
+                          <i class="fa fa-light fa-box mr-1"></i>
                           <p>
                               Almacen
                               <i class="right fas fa-angle-left"></i>

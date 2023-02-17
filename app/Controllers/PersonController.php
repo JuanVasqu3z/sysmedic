@@ -58,7 +58,6 @@ class PersonController extends BaseController
     public function viewSearchPerson(Request $request, Response $response)
     {
         sessionValidate('auth');
-        //closeSesion();
 
         if (isset($_GET['persona'])) {
             $persona = new Persona();

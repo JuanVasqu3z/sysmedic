@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use Psr\Container\ContainerInterface;
 use App\Models\User;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -10,13 +9,13 @@ use App\Core\Sesion;
 
 class LoginController extends BaseController
 {
-
     public function initSystem(Request $request, Response $response)
     {
         $user = new User();
         $user->email('admin@sysmedic.com');
         $user->userId('admin-124');
         $user->password(password_hash('12345678', PASSWORD_BCRYPT));
+        $user->rolId('123-admin');
         $user->create();
         return $response;
     }
@@ -40,5 +39,16 @@ class LoginController extends BaseController
             return $response->withHeader('Location', '/?permise=true');
         }
         return $response->withHeader('Location', '/?permise=true');
+    }
+
+    public function endSession(Request $request, Response $response)
+    {
+        $sesionUser = new Sesion();
+        $sesionUser->sessionStart();
+        if ($sesionUser->verifySession('auth')) {
+            $sesionUser->destroySession();
+        }
+        $response = $response->withStatus(302);
+        return $response->withHeader('Location', '/login?permise=true');
     }
 }

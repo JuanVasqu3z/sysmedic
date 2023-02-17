@@ -31,3 +31,4 @@ require_once __DIR__ . '/../app/Controllers/MedicineController.php';
 require_once __DIR__ . '/../app/Controllers/AlmacenController.php';
 require_once __DIR__ . '/../app/Controllers/PersonController.php';
 require_once __DIR__ . '/../app/Controllers/AtencionPrimariaController.php';
+require_once __DIR__ . '/../app/Controllers/LoteController.php';

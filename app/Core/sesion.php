@@ -16,7 +16,6 @@ class Sesion
 
     public function destroySession()
     {
-        session_start();
         session_destroy();
     }
 

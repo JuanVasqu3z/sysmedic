@@ -16,7 +16,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
-        
+
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -45,8 +45,8 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fa  fa-sign-out-alt"></i>
+            <a class="nav-link" href="/end-session">
+                <i class="fa  fa-sign-out-alt"></i>
             </a>
         </li>
     </ul>
