@@ -30,7 +30,7 @@
           <?php endif; ?>
         </div>
         <!-- /.user-block -->
-        <form action="/persona/search" method="GET" class="card-tools d-flex">
+        <form action="/persona/search" method="GET" class="card-tools d-flex" id="MyForm">
           <input class="form-control mr-3" type="text" placeholder="Buscar por Cedula" name="CedulaPersona" id="CedulaPersona" required>
           <button class="btn btn-primary mr-2" type="submit"><i class="fas fa-search" onclick="Busqueda()"></i></button>
         </form>
