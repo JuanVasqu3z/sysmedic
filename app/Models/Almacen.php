@@ -40,9 +40,8 @@ class Almacen
     public function create()
     {
         $preparate = $this->conection->prepare(
-            "INSERT INTO " . $this->table . " (`IdAlmacen`, `Cantidad`, `Nombre`, `Peldanos`) VALUES 
+            "INSERT INTO " . $this->table . " ( `Cantidad`, `Nombre`, `Peldanos`) VALUES 
             (
-                '" . $this->idalmacen . "', 
                 '" . $this->cantidad . "', 
                 '" . $this->nombre . "', 
                 '" . $this->peldanos . "');"

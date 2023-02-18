@@ -42,8 +42,22 @@ class AtencionPrimariaController extends BaseController
     {
         sessionValidate('auth');
         $atencionPrimaria = new AtencionPrimaria();
-        $listaEspera = $atencionPrimaria->getAll();
+        $listaEspera = $atencionPrimaria->getAll(false, true);
         echo $this->view->render('pages/ListaRegister', ['listaEspera' => $listaEspera]);
+        return $response;
+    }
+
+    public function viewHacerAtencionMedica(Request $request, Response $response, $idAtencion)
+    {
+        sessionValidate('auth');
+        $atencionPrimaria = new AtencionPrimaria();
+        $atencionPrimaria->idAtencionp($idAtencion['idAtencion']);
+        $resultAtencion = $atencionPrimaria->find();
+        if (count($resultAtencion) == 0) {
+            echo $this->view->render('pages/Paciente/AtencionMedica');
+            return $response;
+        }
+        echo $this->view->render('pages/Paciente/AtencionMedica', ['atencionPrimaria' => $resultAtencion[0]]);
         return $response;
     }
 }

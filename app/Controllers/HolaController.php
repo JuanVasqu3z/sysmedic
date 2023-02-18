@@ -103,6 +103,7 @@ class HolaController extends BaseController
 
     public function CrearAlmacen(Request $request, Response $response, $args)
     {
+        sessionValidate('auth');
         echo $this->view->render('pages/Almacen/CrearAlmacen');
         return $response;
     }

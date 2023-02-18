@@ -37,3 +37,15 @@ function Auth()
     }
     return null;
 }
+
+
+function calculateVisitas($cedula, $arrayDeAtenciones)
+{
+    $cuenta = 0;
+    foreach ($arrayDeAtenciones as $atenciones) {
+        if ($cedula == $atenciones->Cedula) {
+            $cuenta++;
+        }
+    }
+    return $cuenta;
+}

@@ -76,12 +76,21 @@ class AtencionPrimaria
         $preparate = $this->conection->prepare(
             'UPDATE ' . $this->table . ' SET 
             IdPersona  = "' . $this->idPersona . '",
-            IdPersonalDeApoyo  = "' . $this->idPersonadeApoyo . '",
             Fecha  = "' . $this->fecha . '",
             Hora  = "' . $this->hora . '",
             MotivoDeconsulta  = "' . $this->motivodeConsulta . '",
-            WHERE IdAtencionP = "' . $this->idAtencionp . '"
-            '
+            WHERE IdAtencionP = "' . $this->idAtencionp . '"'
+        );
+        $preparate->execute();
+    }
+
+    public function updateStatus($atendido, $espera)
+    {
+        $preparate = $this->conection->prepare(
+            'UPDATE ' . $this->table . ' SET 
+            atendido  = "' . $atendido . '",
+            enEspera  = "' . $espera . '"
+            WHERE IdAtencionP = "' . $this->idAtencionp . '"'
         );
         $preparate->execute();
     }
@@ -96,18 +105,41 @@ class AtencionPrimaria
 
     public function find()
     {
-        $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' WHERE IdAtencionP="' . $this->idAtencionp . '"'
-        );
+        $sql = 'SELECT * FROM ' . $this->table .
+            ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona WHERE IdAtencionP="' . $this->idAtencionp .
+            '"';
+        $preparate = $this->conection->prepare($sql);
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 
-    public function getAll()
+    public function getPerson($idPersona, $espera = false)
     {
-        $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona'
-        );
+        $sql = 'SELECT * FROM ' . $this->table
+            . ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona 
+            WHERE Personas.IdPersona="' . $idPersona . '"';
+        if ($espera == true) {
+            $sql = $sql . ' AND AtencionesPrimarias.enEspera=1 ';
+        }
+        $preparate = $this->conection->prepare($sql);
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getAll($atendido = false, $espera = false)
+    {
+        $sql = 'SELECT * FROM ' . $this->table
+            . ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona ';
+        if ($atendido == true) {
+            $sql = $sql . '  WHERE AtencionesPrimarias.atendido=1 ';
+        }
+        if ($atendido == true && $espera == true) {
+            $sql = $sql . ' AND ';
+        }
+        if ($espera == true) {
+            $sql = $sql . ' WHERE AtencionesPrimarias.enEspera=1 ';
+        }
+        $preparate = $this->conection->prepare($sql);
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }

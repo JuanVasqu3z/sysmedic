@@ -14,21 +14,22 @@ class AlmacenController extends BaseController
         // echo var_dump($request->getParsedBody());
 
         $almacen = new Almacen();
-        $almacen->idalmacen($dataPost['idalmacen']);
+        $almacen->idalmacen('alma' . date('ydms'));
         $almacen->cantidad($dataPost['cantidad']);
         $almacen->nombre($dataPost['nombre']);
         $almacen->peldanos($dataPost['peldanos']);
         $almacen->create();
         $conection = \App\Core\conection();
-         $response = $response->withStatus(302);
+        $response = $response->withStatus(302);
         return $response->withHeader('Location', '/Almacen/AlmacenGestion');
     }
 
-    public function listarAlmacen(Request $request,Response $response)
+    public function listarAlmacen(Request $request, Response $response)
     {
+        sessionValidate('auth');
         $almacen = new Almacen();
         $arrayAlmacenes = $almacen->getAll();
-        echo $this->view->render('pages/Almacen/AlmacenGestion',['almacenes'=>$arrayAlmacenes]);
+        echo $this->view->render('pages/Almacen/AlmacenGestion', ['almacenes' => $arrayAlmacenes]);
         return $response;
     }
 }

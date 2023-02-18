@@ -5,6 +5,8 @@ namespace App\Controllers;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use App\Models\Persona;
+use App\Models\AtencionMedica;
+use App\Models\AtencionPrimaria;
 
 class PersonController extends BaseController
 {   //buscar en la api
@@ -106,6 +108,30 @@ class PersonController extends BaseController
             return $response;
         }
         echo $this->view->render('pages/Home');
+        return $response;
+    }
+
+    public function viewDetallePaciente(Request $request, Response $response, $idPersona)
+    {
+        sessionValidate('auth');
+        $persona = new Persona();
+        $persona->idPersona($idPersona['idPersona']);
+        $responsePersona = $persona->find();
+
+        $atencionPrimaria = new AtencionPrimaria();
+        $responsePrimaria = $atencionPrimaria->getPerson($idPersona['idPersona'], true);
+
+        $atencionMedica = new AtencionMedica();
+        $responseMedica = $atencionMedica->findPerson($idPersona['idPersona']);
+
+        echo $this->view->render(
+            'pages/Paciente/DetallePaciente',
+            [
+                'persona' => $responsePersona[0],
+                'primariaAtencion' => $responsePrimaria,
+                'atencionMedica' => $responseMedica
+            ]
+        );
         return $response;
     }
 }

@@ -6,10 +6,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->get('/', 'App\Controllers\PersonController:viewSearchPerson');
 
 //routes of Paciente
-$app->get('/Paciente/AtencionMedica', 'App\Controllers\HolaController:AtencionMedica');
-$app->get('/Paciente/Control', 'App\Controllers\HolaController:ControlPaciente');
-$app->get('/Paciente/Detalle', 'App\Controllers\HolaController:DetallePaciente');
-$app->get('/Paciente/Detalle/Detalle', 'App\Controllers\HolaController:DetalleDelDetalle');
+$app->get('/Paciente/AtencionMedica/{idAtencion}', 'App\Controllers\AtencionPrimariaController:viewHacerAtencionMedica');
+$app->get('/Paciente/Control', 'App\Controllers\AtencionMedicaController:viewControlDePaciente');
+$app->get('/Paciente/Detalle/{idPersona}', 'App\Controllers\PersonController:viewDetallePaciente');
+//$app->get('/Paciente/Detalle/Detalle', 'App\Controllers\HolaController:DetalleDelDetalle');
 
 //routes of medicina
 $app->get('/Medicina/Register', 'App\Controllers\HolaController:RegisterMedicamentos');
@@ -57,6 +57,9 @@ $app->get('/persona/view/create', 'App\Controllers\PersonController:viewCreatePe
 // atencion primaria
 $app->post('/atencion-primaria/save', 'App\Controllers\AtencionPrimariaController:saveAtencionPrimaria');
 $app->get('/ListaRegistro', 'App\Controllers\AtencionPrimariaController:listaEspera');
+
+// atencion medica 
+$app->post('/atencion-medica/save', 'App\Controllers\AtencionMedicaController:saveAtencionMedica');
 
 // lotes
 $app->post('/lote/save', 'App\Controllers\LoteController:saveLote');

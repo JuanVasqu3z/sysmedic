@@ -26,7 +26,7 @@
                                 <td><?= $tupla->Fecha ?></td>
                                 <td><?= $tupla->Hora ?></td>
                                 <td>
-                                    <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                                    <a href="/Paciente/AtencionMedica/<?= $tupla->IdAtencionP ?>"><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
                                     <a href=""><i class="fa fa-regular fa-trash text-danger"></i></a>
                                 </td>
                             </tr>

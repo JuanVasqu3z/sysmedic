@@ -4,13 +4,12 @@ namespace App\Models;
 
 class AtencionMedica
 {
-    private $idatencionmedica;
+    private $idAtencionMedica;
     private $idatencionp;
     private $idmedico;
     private $diagnostico;
     private $recipe;
     private $indicacciones;
-    private $idpersona;
     private $table;
     private $conection;
 
@@ -22,7 +21,7 @@ class AtencionMedica
 
     public function idatencionmedica($value)
     {
-        $this->idatencionmedica = $value;
+        $this->idAtencionMedica = $value;
     }
 
     public function idatencionp($value)
@@ -50,23 +49,17 @@ class AtencionMedica
         $this->indicacciones = $value;
     }
 
-    public function idpersona($value)
-    {
-        $this->idpersona = $value;
-    }
-
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (IdAtencionMedica, IdAtencionP, IdMedico, Diagnostico, Recipe, Indicacciones, IdPersona) VALUES 
+            'INSERT INTO ' . $this->table . ' (IdAtencionMedica, IdAtencionP, IdMedico, Diagnostico, Recipe, Indicacciones) VALUES 
             (
-                "' . $this->idatencionmedica . '",
+                "' . $this->idAtencionMedica . '",
                 "' . $this->idatencionp . '",
                 "' . $this->idmedico . '",
                 "' . $this->diagnostico . '",
                 "' . $this->recipe . '",
-                "' . $this->indicacciones . '",
-                "' . $this->idpersona . '",
+                "' . $this->indicacciones . '"
             )'
         );
         $preparate->execute();
@@ -80,9 +73,8 @@ class AtencionMedica
             IdMedico  = "' . $this->idmedico . '",
             Diagnostico  = "' . $this->diagnostico . '",
             Recipe  = "' . $this->recipe . '",
-            Indicacciones  = "' . $this->indicacciones . '",
-            IdPersona  = "' . $this->idpersona . '",
-            WHERE IdAtencionMedica = "' . $this->idatencionmedica . '"
+            Indicacciones  = "' . $this->indicacciones . '"
+            WHERE IdAtencionMedica = "' . $this->idAtencionMedica . '"
             '
         );
         $preparate->execute();
@@ -91,7 +83,7 @@ class AtencionMedica
     public function delete()
     {
         $preparate = $this->conection->prepare(
-            'DELETE FROM ' . $this->table . ' WHERE IdAtencionMedica="' . $this->idatencionmedica . '"'
+            'DELETE FROM ' . $this->table . ' WHERE IdAtencionMedica="' . $this->idAtencionMedica . '"'
         );
         $preparate->execute();
     }
@@ -99,18 +91,28 @@ class AtencionMedica
     public function find()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' WHERE IdAtencionMedica="' . $this->idatencionmedica . '"'
+            'SELECT * FROM ' . $this->table . ' WHERE IdAtencionMedica="' . $this->idAtencionMedica . '"'
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function findPerson($personId)
+    {
+        $sql = 'SELECT * FROM ' . $this->table .
+            ' INNER JOIN AtencionesPrimarias on AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP 
+        INNER JOIN Personas on Personas.IdPersona=AtencionesPrimarias.IdPersona WHERE Personas.IdPersona="' . $personId . '"';
+        $preparate = $this->conection->prepare($sql);
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function getAll()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table
+            'SELECT * FROM ' . $this->table . ' INNER JOIN AtencionesPrimarias on AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP INNER JOIN Personas on Personas.IdPersona=AtencionesPrimarias.IdPersona '
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 }

@@ -41,6 +41,7 @@ class LoteController extends BaseController
 
     public function viewControlLotes(Request $request, Response $response)
     {
+        sessionValidate('auth');
         $loteNew = new Lote();
         $listadoLotes = $loteNew->getAll();
         echo $this->view->render('pages/Almacen/ControlLotes', ['lotes' => $listadoLotes]);

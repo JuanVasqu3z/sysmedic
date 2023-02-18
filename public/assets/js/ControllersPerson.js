@@ -4,7 +4,7 @@ fetch("../assets/js/Person.json")
   .then((response) => response.json())
   .then((Person) => (Resultado = Person))
   .catch((error) => {
-    alert("erros:", error);
+    //alert("erros:", error);
   });
 
 const Form = document.getElementById("MyForm");
