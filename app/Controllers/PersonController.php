@@ -30,15 +30,15 @@ class PersonController extends BaseController
     // crear persona
     public function viewCreatePerson(Request $request, Response $response)
     {
+        sessionValidate('auth');
         echo $this->view->render('pages/persona/createPerson');
         return $response;
     }
     //registra persona
     public function registrarPersona(Request $request, Response $response)
     {
+        sessionValidate('auth');
         $paramts = $request->getParsedBody();
-        echo var_dump($_POST);
-        die();
         $persona = new Persona();
         $persona->cedula($paramts['cedula']);
         $personaMatch = $persona->buscarCedula();
@@ -61,6 +61,7 @@ class PersonController extends BaseController
 
     public function createPersonApi(Request $request, Response $response)
     {
+        sessionValidate('auth');
         $paramts = $_GET;
         $persona = new Persona();
         $persona->cedula($paramts['cedula']);

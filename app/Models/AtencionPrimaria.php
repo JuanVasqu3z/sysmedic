@@ -126,18 +126,21 @@ class AtencionPrimaria
         return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 
-    public function getAll($atendido = false, $espera = false)
+    public function getAll($atendido = false, $espera = false, $date = false)
     {
         $sql = 'SELECT * FROM ' . $this->table
-            . ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona ';
-        if ($atendido == true) {
-            $sql = $sql . '  WHERE AtencionesPrimarias.atendido=1 ';
+            . ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona';
+        if($atendido == true || $espera == true || $date == true){
+            $sql = $sql. ' WHERE 1';
         }
-        if ($atendido == true && $espera == true) {
-            $sql = $sql . ' AND ';
+        if ($atendido == true) {
+            $sql = $sql . ' AND AtencionesPrimarias.atendido=1 ';
         }
         if ($espera == true) {
-            $sql = $sql . ' WHERE AtencionesPrimarias.enEspera=1 ';
+            $sql = $sql . ' AND AtencionesPrimarias.enEspera=1 ';
+        }
+        if ($date != false ){
+            $sql = $sql . ' AND Fecha="'.$date.'"';
         }
         $preparate = $this->conection->prepare($sql);
         $preparate->execute();

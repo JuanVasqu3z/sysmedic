@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="" class="brand-link">
-          <img src="<?= assets('image/logo.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 logo-uptos">
+          <img src="<?= assets('image/uptos.png') ?>" alt="AdminLTE Logo" class="logo-side">
           <span class="brand-text font-weight-light">Medic Sys</span>
       </a>
       <!-- Sidebar -->
@@ -26,7 +26,6 @@
                           <i class="fa fa-home fa-house-blank mr-1"></i>
                           <p>
                               Inicio
-
                           </p>
                       </a>
                   </li>
@@ -48,11 +47,11 @@
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
-                          <li class="nav-item">
+                          <!-- <li class="nav-item">
                               <a href="/Paciente/AtencionMedica" class="nav-link">
                                   <p class="ml-4">Atencion Medica</p>
                               </a>
-                          </li>
+                          </li> -->
                           <li class="nav-item">
                               <a href="/Paciente/Control" class="nav-link">
                                   <p class="ml-4">Control de Pacientes</p>

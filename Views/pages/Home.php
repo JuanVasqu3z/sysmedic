@@ -81,10 +81,10 @@
         </div>
         <div class="card-body">
           <div class="d-flex form-fila">
-            <div class="col-6">
+            <!-- <div class="col-6">
               <label>Fecha</label>
               <input class="form-control" name="date" type="date" placeholder="Default input">
-            </div>
+            </div> -->
             <div class="col-6">
               <label>Hora</label>
               <input class="form-control" name="time" type="time" placeholder="Default input">

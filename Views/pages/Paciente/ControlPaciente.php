@@ -26,7 +26,7 @@
               <th>Cedula</th>
               <th>Nombre</th>
               <th>Apellido</th>
-              <th>Visitar</th>
+              <th>Visitas</th>
               <th>Accion</th>
             </tr>
           </thead>

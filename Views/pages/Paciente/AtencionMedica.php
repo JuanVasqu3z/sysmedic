@@ -59,13 +59,15 @@
                     </div>
                 </div>
                 <div class="d-flex jb fila-form">
-                    <div class="col-6">
+                    <div class="col">
                         <label>Diagnostico</label>
-                        <input class="form-control" name="diagnostico" type="text" placeholder="Default input">
+                        <textarea class="form-control text-descriccion" name="diagnostico" type="text" placeholder="Descripcion..."></textarea>
                     </div>
-                    <div class="col-6">
+                </div>
+                <div class="d-flex mt-3 jb fila-form">
+                    <div class="col">
                         <label>Recipe</label>
-                        <input class="form-control" name="recipe" type="text" placeholder="Default input">
+                        <textarea class="form-control text-descriccion" name="recipe" type="text" placeholder="Descripcion..."></textarea>
                     </div>
                 </div>
                 <div class="d-flex mt-3 jb fila-form">
@@ -76,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex jend mt-1">
+                <div class="d-flex jend mt-3">
                     <a href="/" class="btn btn-secondary mr-3">Entregar Medicamento</a>
                     <button type="submit" class="btn btn-primary">Atender</button>
                 </div>

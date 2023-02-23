@@ -47,4 +47,13 @@ class LoteController extends BaseController
         echo $this->view->render('pages/Almacen/ControlLotes', ['lotes' => $listadoLotes]);
         return $response;
     }
+
+    public function EntregaMedicina(Request $request, Response $response)
+    {
+        sessionValidate('auth');
+        $loteNew = new Lote();
+        $listadoLotes = $loteNew->getAll();
+        echo $this->view->render('pages/EntregaMedicamento', ['lotes' => $listadoLotes]);
+        return $response;
+    }
 }

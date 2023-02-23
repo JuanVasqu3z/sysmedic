@@ -25,10 +25,10 @@ class AtencionPrimariaController extends BaseController
         }
         $paramts = $request->getParsedBody();
         $atencionPrimaria = new AtencionPrimaria();
-        $atencionPrimaria->idAtencionp($paramts['persona_id'] . date('1'));
+        $atencionPrimaria->idAtencionp($paramts['persona_id'] . date('Y-m-d H:i:s'));
         $atencionPrimaria->idPersona($paramts['persona_id']);
         $atencionPrimaria->idPersonadeApoyo('2825006009220223'); // mira sin venguenza esto es estatico
-        $atencionPrimaria->fecha($paramts['date']);
+        $atencionPrimaria->fecha(date('Y-m-d'));
         $atencionPrimaria->hora($paramts['time']);
         $atencionPrimaria->motivodeConsulta($paramts['description']);
         $atencionPrimaria->medicoId($userCurrent->IdPersona);
@@ -42,7 +42,7 @@ class AtencionPrimariaController extends BaseController
     {
         sessionValidate('auth');
         $atencionPrimaria = new AtencionPrimaria();
-        $listaEspera = $atencionPrimaria->getAll(false, true);
+        $listaEspera = $atencionPrimaria->getAll(false, true, date('Y-m-d'));
         echo $this->view->render('pages/ListaRegister', ['listaEspera' => $listaEspera]);
         return $response;
     }

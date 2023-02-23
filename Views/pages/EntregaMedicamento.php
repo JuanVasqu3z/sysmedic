@@ -15,7 +15,11 @@
                         </div>
                         <div class="col-6">
                             <label>Lote</label>
-                            <input class="form-control" type="text" placeholder="Default input">
+                            <select class="form-control" name="medicamento_id" type="text" placeholder="Default">
+                                <?php foreach ($lotes as $lote) : ?>
+                                    <option value="<?= $lote->idLote  ?>"><?= $lote->Cantidad ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
                     <div class="d-flex jb fila-form mb-4">

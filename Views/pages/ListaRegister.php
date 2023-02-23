@@ -12,7 +12,8 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Doctor</th>
+                            <th>Asistente Medico</th>
+                            <th>Motivo de Consulta</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Accion</th>
@@ -22,7 +23,8 @@
                         <?php foreach ($listaEspera as $tupla) : ?>
                             <tr>
                                 <td><?= $tupla->Nombre ?> <?= $tupla->Apellido ?></td>
-                                <td>Juan Vasquez</td>
+                                <td>Sherman Santa Cruz</td>
+                                <td><?= $tupla->MotivoDeconsulta ?></td>
                                 <td><?= $tupla->Fecha ?></td>
                                 <td><?= $tupla->Hora ?></td>
                                 <td>

@@ -35,3 +35,4 @@ class MedicineController extends BaseController
         return $response;
     }
 }
+
