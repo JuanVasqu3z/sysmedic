@@ -32,7 +32,7 @@ class AtencionMedicaController extends BaseController
         $atencionPrimaria->updateStatus(1, 0);
 
         $response = $response->withStatus(302);
-        return $response->withHeader('Location', '/Paciente/Control?action=success&type=create-medica-atencion');
+        return $response->withHeader('Location', '/Paciente/AtencionMedicaCreada/'. $dataPost['idAtencionPrimaria']);
     }
 
     public function viewControlDePaciente(Request $request, Response $response)
@@ -47,6 +47,21 @@ class AtencionMedicaController extends BaseController
             'pages/Paciente/ControlPaciente',
             ['personas' => $listaDePersona, 'atencionesMedicas' => $responseAtencionMedica]
         );
+        return $response;
+    }
+    public function ViewAtencionMedicaCreada (Request $request, Response $response,$idAtencion)
+    {
+        $atencionMedica = new AtencionMedica();
+        $atencionMedica->idAtencionp($idAtencion['idAtencion']);
+        $resultAtencion = $atencionMedica->find();
+        if (count($resultAtencion) == 0) {
+            echo $this->view->render('pages/Paciente/AtencionMedicaCreada');
+            return $response;
+        }
+        
+        $atencionMedica = new AtencionMedica();
+        $responseMedica = $atencionMedica->findPerson($resultAtencion[0]->IdPersona);
+        echo $this->view->render('pages/Paciente/AtencionMedicaCreada', ['atencionPrimaria' => $resultAtencion[0],'atencionMedica' => $responseMedica]);
         return $response;
     }
 }

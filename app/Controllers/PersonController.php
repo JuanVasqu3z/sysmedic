@@ -135,4 +135,34 @@ class PersonController extends BaseController
         );
         return $response;
     }
+
+    public function ViewDetalleDelDetalle(Request $request, Response $response, $args)
+    {
+        sessionValidate('auth');
+        echo $this->view->render('pages/Paciente/DetalleDelDetalle');
+        return $response;
+    }
+
+    public function ViewHistorialPaciente(Request $request, Response $response, $idPersona)
+    {
+        sessionValidate('auth');
+        $persona = new Persona();
+        $persona->idPersona($idPersona['idPersona']);
+        $responsePersona = $persona->find();
+
+        $atencionMedica = new AtencionMedica();
+        $responseMedica = $atencionMedica->findPerson($idPersona['idPersona']);
+
+        echo $this->view->render(
+            'pages/Paciente/AtencionMedica',
+            [
+                'persona' => $responsePersona[0],
+                'atencionMedica' => $responseMedica
+            ]
+        );
+        return $response;
+    }
+
 }
+
+

@@ -110,7 +110,9 @@ class AtencionMedica
     public function getAll()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' INNER JOIN AtencionesPrimarias on AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP INNER JOIN Personas on Personas.IdPersona=AtencionesPrimarias.IdPersona '
+            'SELECT * FROM ' . $this->table . 
+            ' INNER JOIN AtencionesPrimarias on AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP 
+            INNER JOIN Personas on Personas.IdPersona=AtencionesPrimarias.IdPersona '
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);

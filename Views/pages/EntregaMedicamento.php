@@ -7,39 +7,28 @@
                 <div class="card-header">
                     <h4 class="d-inline">Entrega de Medicamentos</h4>
                 </div>
+            
                 <div class="card-body">
+                    <div class="">
+                        <input type="hidden" name="idAtencionPrimaria" value="<?= $atencionMedica->IdAtencionMedica ?>">
+                    </div>
                     <div class="d-flex jb fila-form mb-4">
-                        <div class="col-6">
-                            <label>Atencion Medica</label>
-                            <input class="form-control" type="text" placeholder="Default input">
-                        </div>
+                        
                         <div class="col-6">
                             <label>Lote</label>
                             <select class="form-control" name="medicamento_id" type="text" placeholder="Default">
                                 <?php foreach ($lotes as $lote) : ?>
-                                    <option value="<?= $lote->idLote  ?>"><?= $lote->Cantidad ?></option>
+                                    <option value="<?=$lote->IdLote?>"><?= $lote->medicaNombre.'  '. $lote->Unidad. $lote->Presentancion?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                    </div>
-                    <div class="d-flex jb fila-form mb-4">
                         <div class="col-6">
                             <label>Cantidad</label>
-                            <input class="form-control" type="text" placeholder="Default input">
-                        </div>
-                        <div class="col-6">
-                            <label>Fecha</label>
-                            <input class="form-control" type="text" placeholder="Default input">
+                            <input class="form-control" type="number" placeholder="Cantidad de Medicamento">
                         </div>
                     </div>
-                    <div class="d-flex jb fila-form">
-                        <div class="col-6">
-                            <label>Responsable</label>
-                            <input class="form-control" type="text" placeholder="Default input">
-                        </div>
-                    </div>
-                    <div class="d-flex jend mt-5">
-                        <button class="btn btn-primary">Registrar</button>
+                    <div class="d-flex jend mt-5 mr-5">
+                        <button class="btn btn-primary">Entregar</button>
                     </div>
                 </div>
                 <!-- /.card-body -->

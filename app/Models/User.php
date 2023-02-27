@@ -80,10 +80,33 @@ class User
     public function find()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' INNER JOIN Personas ON Personas.IdPersona=Users.personId INNER JOIN Medicos ON Medicos.IdPersona=Personas.IdPersona INNER JOIN Roles ON Roles.rolId=Users.rolId WHERE Users.userId="' . $this->userId . '"'
+            'SELECT * FROM ' . $this->table . 
+            ' INNER JOIN Personas ON Personas.IdPersona=Users.personId 
+            INNER JOIN Medicos ON Medicos.IdPersona=Personas.IdPersona 
+            INNER JOIN Roles ON Roles.rolId=Users.rolId WHERE Users.userId="' . $this->userId . '"'
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function getPermisesRoleUser()
+    {
+        $preparate = $this->conection->prepare(
+            'SELECT Permisos.Nombre,Permisos.IdPermiso FROM '. $this->table .' 
+            INNER JOIN Roles ON Roles.rolId=Users.rolId 
+            INNER JOIN PermisosRoles ON Roles.rolId=PermisosRoles.rolId
+            INNER JOIN Permisos ON Permisos.IdPermiso=PermisosRoles.IdPermiso
+             WHERE Users.userId="' . $this->userId . '"'
+        );
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function joinFind()
+    {
+        $user = $this->find();
+        $permisos = $this->getPermisesRoleUser();
+        return ['user'=>$user[0],'permisos'=> $permisos];
     }
 
     public function findEmail()

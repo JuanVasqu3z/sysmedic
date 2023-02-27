@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <!-- Tabla de AtencionPrimaria -->
+            <!-- Tabla de Atencion Medica-->
             <div class="card-body table-responsive mt-3">
                 <h4 class="ml-2 mb-0">Atendidas</h4>
                 <table class="table table-hover text-nowrap">
@@ -67,14 +67,14 @@
                                 <td><?= $medica->Fecha ?></td>
                                 <td><?= $medica->Hora ?></td>
                                 <td>
-                                    <a href=""><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
+                                    <a href="/Paciente/Detail"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <!-- Tabla de Atencion Medica -->
+            <!-- Tabla de AtencionPrimaria  -->
             <div class="card-body table-responsive mt-5 bordT">
                 <h4 class="ml-2 mb-0">No Atendidas</h4>
                 <table class="table table-hover text-nowrap">

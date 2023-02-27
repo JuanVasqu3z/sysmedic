@@ -11,8 +11,8 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Asistente Medico</th>
+                            <th>Nombre del Paciente</th>
+                            <th>Personal De Salud</th>
                             <th>Motivo de Consulta</th>
                             <th>Fecha</th>
                             <th>Hora</th>
@@ -23,13 +23,15 @@
                         <?php foreach ($listaEspera as $tupla) : ?>
                             <tr>
                                 <td><?= $tupla->Nombre ?> <?= $tupla->Apellido ?></td>
-                                <td>Sherman Santa Cruz</td>
-                                <td><?= $tupla->MotivoDeconsulta ?></td>
+                                <td><?= $tupla->NombreMedico ?> <?= $tupla->ApellidoMedico ?></td>
+                                <td><?= $tupla->MotivoDeConsulta ?></td>
                                 <td><?= $tupla->Fecha ?></td>
                                 <td><?= $tupla->Hora ?></td>
                                 <td>
-                                    <a href="/Paciente/AtencionMedica/<?= $tupla->IdAtencionP ?>"><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
-                                    <a href=""><i class="fa fa-regular fa-trash text-danger"></i></a>
+                                    <?php if( validatePermise('crear_persona') ): ?>
+                                        <a href="/Paciente/AtencionMedica/<?= $tupla->IdAtencionP ?>"><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                                    <?php endif; ?>
+                                    <a href="" onclick="openWindow('/exportar-recipe')"><i class="fa fa-regular fa-trash text-danger"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -41,3 +43,8 @@
     </div>
 </div>
 </div>
+<script>
+    function openWindow(urlToOpen){
+        window.open(urlToOpen,'_blank');
+    }
+</script>

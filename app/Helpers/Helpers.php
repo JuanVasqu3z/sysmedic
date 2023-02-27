@@ -38,6 +38,23 @@ function Auth()
     return null;
 }
 
+function AuthPermisos()
+{
+    $login = new App\Core\Sesion();
+    if (isset($_SESSION['globalUser'])) {
+        if (!session_status() == 1) {
+            $login->sessionStart();
+        }
+        if ($login->verifySession('auth')) {
+            $user = new App\Models\User();
+            $user->userId($_SESSION['globalUser']);
+            $userCurrent = $user->joinFind();
+            return $userCurrent;
+        }
+    }
+    return null;
+}
+
 
 function calculateVisitas($cedula, $arrayDeAtenciones)
 {
@@ -48,4 +65,14 @@ function calculateVisitas($cedula, $arrayDeAtenciones)
         }
     }
     return $cuenta;
+}
+
+function validatePermise($nombrePermiso){
+    $permisoUsuario = AuthPermisos();
+    foreach($permisoUsuario['permisos'] as $permiso){
+        if( $permiso->Nombre == $nombrePermiso ){
+            return true;
+        }
+    }
+    return false;
 }

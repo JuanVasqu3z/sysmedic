@@ -73,11 +73,6 @@ class HolaController extends BaseController
         return $response;
     }
 
-    public function DetalleDelDetalle(Request $request, Response $response, $args)
-    {
-        echo $this->view->render('pages/Paciente/DetalleDelDetalle');
-        return $response;
-    }
 
     //Render Medicamento
     public function RegisterMedicamentos(Request $request, Response $response, $args)
@@ -122,6 +117,12 @@ class HolaController extends BaseController
     public function RegisterLote(Request $request, Response $response, $args)
     {
         echo $this->view->render('pages/Almacen/RegisterLote');
+        return $response;
+    }
+
+    public function exportar(Request $request, Response $response)
+    {
+        echo $this->view->render('pages/pdf/recipe-medico');
         return $response;
     }
 }

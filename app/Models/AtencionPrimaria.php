@@ -128,8 +128,14 @@ class AtencionPrimaria
 
     public function getAll($atendido = false, $espera = false, $date = false)
     {
-        $sql = 'SELECT * FROM ' . $this->table
-            . ' INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona';
+        $sql = 'SELECT Personas.IdPersona,Personas.Cedula,Personas.Nombre,Personas.Apellido,Personas.Direccion,
+            Personas.NumeroTelefono,Personas.Sexo,Medico.IdPersona as IdPersonaMedico,Medico.Nombre as NombreMedico,
+            Medico.Apellido as ApellidoMedico,AtencionesPrimarias.MotivoDeConsulta,AtencionesPrimarias.Fecha,
+            AtencionesPrimarias.Hora,AtencionesPrimarias.IdAtencionP
+            FROM AtencionesPrimarias 
+        INNER JOIN Personas on AtencionesPrimarias.IdPersona=Personas.IdPersona 
+        INNER JOIN Personas as Medico on AtencionesPrimarias.medicoId=Medico.IdPersona';
+
         if($atendido == true || $espera == true || $date == true){
             $sql = $sql. ' WHERE 1';
         }

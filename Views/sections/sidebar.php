@@ -3,7 +3,7 @@
       <!-- Brand Logo -->
       <a href="" class="brand-link">
           <img src="<?= assets('image/uptos.png') ?>" alt="AdminLTE Logo" class="logo-side">
-          <span class="brand-text font-weight-light">Medic Sys</span>
+          <span class="brand-text font-weight-light">Sistema Medico</span>
       </a>
       <!-- Sidebar -->
       <div class="sidebar side">

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use App\Models\AtencionPrimaria;
+use App\Models\AtencionMedica;
 use App\Core\Sesion;
 
 class AtencionPrimariaController extends BaseController
@@ -47,7 +48,7 @@ class AtencionPrimariaController extends BaseController
         return $response;
     }
 
-    public function viewHacerAtencionMedica(Request $request, Response $response, $idAtencion)
+    public function viewHacerAtencionMedica(Request $request, Response $response, $idAtencion,)
     {
         sessionValidate('auth');
         $atencionPrimaria = new AtencionPrimaria();
@@ -57,7 +58,12 @@ class AtencionPrimariaController extends BaseController
             echo $this->view->render('pages/Paciente/AtencionMedica');
             return $response;
         }
-        echo $this->view->render('pages/Paciente/AtencionMedica', ['atencionPrimaria' => $resultAtencion[0]]);
+        
+        $atencionMedica = new AtencionMedica();
+        $responseMedica = $atencionMedica->findPerson($resultAtencion[0]->IdPersona);
+        echo $this->view->render('pages/Paciente/AtencionMedica', ['atencionPrimaria' => $resultAtencion[0],'atencionMedica' => $responseMedica]);
         return $response;
+
+
     }
 }

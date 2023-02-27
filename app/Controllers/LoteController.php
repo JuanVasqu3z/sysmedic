@@ -7,6 +7,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Medicamento;
 use App\Models\Almacen;
 use App\Models\Lote;
+use App\Models\Persona;
+use App\Models\AtencionMedica;
 
 class LoteController extends BaseController
 {
@@ -48,12 +50,27 @@ class LoteController extends BaseController
         return $response;
     }
 
-    public function EntregaMedicina(Request $request, Response $response)
+    public function EntregaMedicina(Request $request, Response $response,$personaId)
     {
         sessionValidate('auth');
+        $idAtencion = $_GET['idAtencion'];
+        $atencionMedica = new AtencionMedica();
+        $atencionMedica->idatencionmedica($idAtencion);
+        $responseAtencionMedica = $atencionMedica->find();
+
+        $persona = new Persona();
+        $persona->idPersona($personaId['personaId']);
+        $onePersona = $persona->find();
+       
+
         $loteNew = new Lote();
-        $listadoLotes = $loteNew->getAll();
-        echo $this->view->render('pages/EntregaMedicamento', ['lotes' => $listadoLotes]);
+        $listadoLotes = $loteNew->getAll(false,true);
+        echo $this->view->render('pages/EntregaMedicamento', 
+        [   
+            'lotes' => $listadoLotes,
+            'persona'=>$onePersona,
+            'atencionMedica' => $responseAtencionMedica[0]
+        ]);
         return $response;
     }
 }

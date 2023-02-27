@@ -114,29 +114,42 @@ class Lote
         return $preparate->fetchAll();
     }
 
-    public function getAll()
+    public function getAll($fechaVencimiento = false, $cantidadmayor = false)
     {
-        $preparate = $this->conection->prepare(
+        $sql =
             'SELECT 
-            Lotes.IdLote,
-            Lotes.Cantidad,
-            Lotes.FechaIngreso,
-            Lotes.FechaVencimiento,
-            Lotes.FechaExpedicion,
-            Lotes.Total,
-            Lotes.Codigo,
-            Lotes.IdAlmacen,
-            Medicamentos.Codigo,
-            Medicamentos.Nombre as medicaNombre,
-            Medicamentos.Tipo,
-            Medicamentos.Presentancion,
-            Medicamentos.Unidad,
-            Medicamentos.Cantidad,
-            Almacenes.IdAlmacen,
-            Almacenes.Cantidad,
-            Almacenes.Nombre as almacenNombre,
-            Almacenes.Peldanos
-            FROM ' . $this->table . ' INNER JOIN Medicamentos INNER JOIN Almacenes'
+        Lotes.IdLote,
+        Lotes.Cantidad,
+        Lotes.FechaIngreso,
+        Lotes.FechaVencimiento,
+        Lotes.FechaExpedicion,
+        Lotes.Total,
+        Lotes.Codigo,
+        Lotes.IdAlmacen,
+        Medicamentos.Codigo,
+        Medicamentos.Nombre as medicaNombre,
+        Medicamentos.Tipo,
+        Medicamentos.Presentancion,
+        Medicamentos.Unidad,
+        Medicamentos.Cantidad,
+        Almacenes.IdAlmacen,
+        Almacenes.Cantidad,
+        Almacenes.Nombre as almacenNombre,
+        Almacenes.Peldanos
+        FROM ' . $this->table . ' INNER JOIN Medicamentos ON Lotes.Codigo=Medicamentos.Codigo 
+        INNER JOIN Almacenes ON Lotes.IdAlmacen=Almacenes.IdAlmacen';
+
+        if ($fechaVencimiento == true || $cantidadmayor == true) {
+            $sql = $sql . ' WHERE 1 ';
+        }
+        if ($fechaVencimiento == true) {
+            $sql = $sql . ' AND Lotes.FechaVencimiento>"' . date('Y-m-s') . '"';
+        }
+        if ($cantidadmayor == true) {
+            $slq = $sql . ' AND Lotes.Cantidad>0';
+        }
+        $preparate = $this->conection->prepare(
+            $sql
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);

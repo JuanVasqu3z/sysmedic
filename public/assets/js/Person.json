@@ -10,6 +10,16 @@
         "img" : "http://localhost:8080/assets/image/avatar.png"
     },
     {
+        "FullName": "Luis Manuel Rodriguez",
+        "Cedula": "9980728",
+        "Diretion": "Los Mangles Bloque 5 Apartamento 0204",
+        "NumeroTelefonico": "04168945712",
+        "Sexo": "Masculino",
+        "Tipo": "Profesor",
+        "Carrera": "Informatica",
+        "img" : "http://localhost:8080/assets/image/avatar.png"
+    },
+    {
         "FullName": "Barbara Nicole Guerra Ramirez",
         "Cedula": "26721904",
         "Diretion": "Villa Bolivariana Manzana 15 Casa 12",

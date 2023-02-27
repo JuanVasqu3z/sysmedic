@@ -7,13 +7,14 @@ $app->get('/', 'App\Controllers\PersonController:viewSearchPerson');
 
 //routes of Paciente
 $app->get('/Paciente/AtencionMedica/{idAtencion}', 'App\Controllers\AtencionPrimariaController:viewHacerAtencionMedica');
+$app->get('/Paciente/AtencionMedicaCreada/{idAtencion}', 'App\Controllers\AtencionMedicaController:ViewAtencionMedicaCreada');
 $app->get('/Paciente/Control', 'App\Controllers\AtencionMedicaController:viewControlDePaciente');
 $app->get('/Paciente/Detalle/{idPersona}', 'App\Controllers\PersonController:viewDetallePaciente');
-//$app->get('/Paciente/Detalle/Detalle', 'App\Controllers\HolaController:DetalleDelDetalle');
+$app->get('/Paciente/Detail', 'App\Controllers\PersonController:ViewDetalleDelDetalle');
 
 //routes of medicina
 $app->get('/Medicina/Register', 'App\Controllers\HolaController:RegisterMedicamentos');
-$app->get('/Medicina/Entrega', 'App\Controllers\HolaController:EntregaMedicamento');
+$app->get('/Medicina/Entrega/{personaId}', 'App\Controllers\LoteController:EntregaMedicina');
 $app->get('/Medicina/Lista', 'App\Controllers\MedicineController:listarMedicinas');
 
 // routes of Almacen
@@ -21,6 +22,7 @@ $app->get('/Almacen/Register', 'App\Controllers\LoteController:viewRegisterLote'
 $app->get('/Almacen/ControlLotes', 'App\Controllers\LoteController:viewControlLotes');
 $app->get('/Almacen/AlmacenGestion', 'App\Controllers\AlmacenController:listarAlmacen');
 $app->get('/Almacen/Crear', 'App\Controllers\HolaController:CrearAlmacen');
+
 
 $app->get('/foo', function (Request $request, Response $response, $args) {
     $myService = $this->get('template');
@@ -39,6 +41,7 @@ $app->get('/end-session', 'App\Controllers\LoginController:endSession');
 
 // esta es para iniciar el super user
 $app->get('/init-system', 'App\Controllers\LoginController:initSystem');
+$app->get('/init-asistente', 'App\Controllers\LoginController:createAsistente');
 
 // rutas post (para guardar o actualizar o borrar)\
 // medicina
@@ -63,3 +66,6 @@ $app->post('/atencion-medica/save', 'App\Controllers\AtencionMedicaController:sa
 
 // lotes
 $app->post('/lote/save', 'App\Controllers\LoteController:saveLote');
+
+// generate pdf
+$app->get('/exportar-recipe','App\Controllers\HolaController:exportar');

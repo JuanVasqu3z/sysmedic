@@ -14,10 +14,10 @@ class LoginController extends BaseController
     public function initSystem(Request $request, Response $response)
     {
         $person = new Persona();
-        $person->idPersona('origin-123');
+        $person->idPersona('origin-321');
         $person->cedula('123');
-        $person->nombre('Sherman');
-        $person->apellido('Santa Cruz');
+        $person->nombre('Luis Jose');
+        $person->apellido('Grau');
         $person->direccion('Cancamure');
         $person->numeroTelefono('412198');
         $person->sexo('Masculino');
@@ -28,12 +28,41 @@ class LoginController extends BaseController
         $user->userId('admin-124');
         $user->password(password_hash('12345678', PASSWORD_BCRYPT));
         $user->rolId('123-admin');
-        $user->personId('origin-123');
+        $user->personId('origin-321');
         $user->create();
         // medico 
         $medico = new Medico();
-        $medico->idMedico('medico-123');
-        $medico->idPersona('origin-123');
+        $medico->idMedico('medico-321');
+        $medico->idPersona('origin-321');
+        $medico->numeroDeColegio('1232');
+        $medico->create();
+
+        return $response;
+    }
+
+    public function createAsistente(Request $request, Response $response)
+    {
+        $person = new Persona();
+        $person->idPersona('asistente-123');
+        $person->cedula('431');
+        $person->nombre('Sherman');
+        $person->apellido('Santa Cruz');
+        $person->direccion('Cancamure');
+        $person->numeroTelefono('412198');
+        $person->sexo('Masculino');
+        $person->create();
+        // user admin
+        $user = new User();
+        $user->email('asistente@sysmedic.com');
+        $user->userId('asistente-124');
+        $user->password(password_hash('12345678', PASSWORD_BCRYPT));
+        $user->rolId('123-personal-apoyo');
+        $user->personId('asistente-123');
+        $user->create();
+        // medico 
+        $medico = new Medico();
+        $medico->idMedico('medico-2424');
+        $medico->idPersona('asistente-123');
         $medico->numeroDeColegio('1232');
         $medico->create();
 
@@ -58,7 +87,7 @@ class LoginController extends BaseController
         } else {
             return $response->withHeader('Location', '/?permise=true');
         }
-        return $response->withHeader('Location', '/?permise=true');
+        return $response->withHeader('Locaorigintion', '/?permise=true');
     }
 
     public function endSession(Request $request, Response $response)
@@ -69,6 +98,6 @@ class LoginController extends BaseController
             $sesionUser->destroySession();
         }
         $response = $response->withStatus(302);
-        return $response->withHeader('Location', '/login?permise=true');
+        return $response->withHeader('Location', '/login');
     }
 }

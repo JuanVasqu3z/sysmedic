@@ -4,7 +4,6 @@ fetch("../assets/js/Person.json")
   .then((response) => response.json())
   .then((Person) => (Resultado = Person))
   .catch((error) => {
-    //alert("erros:", error);
   });
 
 const Form = document.getElementById("MyForm");
@@ -16,7 +15,7 @@ Form.addEventListener("submit", function (e) {
   CI = dataC.get("CedulaPersona");
 
   let encontrePapa = Resultado.filter((indice) => indice.Cedula == CI);
-  console.log(encontrePapa);
+  console.log(encontrePapa[0]);
   if (encontrePapa.length == 0) {
     document.getElementById("MyForm").submit();
   } else {
@@ -29,6 +28,8 @@ Form.addEventListener("submit", function (e) {
       direccion: encontrePapa[0].Diretion,
       telefono: encontrePapa[0].NumeroTelefonico,
       sexo: encontrePapa[0].Sexo,
+      tipo: encontrePapa[0].Tipo,
+      carrera: encontrePapa[0].Carrera
     };
 
     fetch("/persona/api/save" + queryBuilder(formPost), {

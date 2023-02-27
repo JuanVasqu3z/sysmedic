@@ -104,8 +104,9 @@ class Persona
 
     public function find()
     {
+        $sql = 'SELECT * FROM ' . $this->table . ' WHERE IdPersona="' . $this->idPersona . '"';
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' WHERE IdPersona="' . $this->idPersona . '"'
+            $sql
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);
