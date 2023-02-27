@@ -41,7 +41,7 @@
                                     <td><?=$almacen->Peldanos?></td>
                                     <td><?=$almacen->Cantidad?></td>
                                     <td>
-                                        <a href=""><i class="fa fa-regular fa-pen mr-2"></i></a>
+                                        <!-- <a href=""><i class="fa fa-regular fa-pen mr-2"></i></a> -->
                                         <a href=""><i class="fa fa-regular fa-trash text-danger mr-2"></i></a>
                                     </td>
                                 </tr>

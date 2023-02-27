@@ -31,7 +31,6 @@ class LoteController extends BaseController
         $loteNew->cantidad($paramts['cantidad']);
         $loteNew->fechaIngreso($paramts['date_input']);
         $loteNew->fechaVencimiento($paramts['date_due']);
-        $loteNew->total($paramts['total']);
         $loteNew->fechaExpedicion($paramts['date_exp']);
         $loteNew->codigo($paramts['medicamento_id']); // medicamento
         $loteNew->idAlmacen($paramts['almacen_id']);
@@ -50,25 +49,18 @@ class LoteController extends BaseController
         return $response;
     }
 
-    public function EntregaMedicina(Request $request, Response $response,$personaId)
+    public function EntregaMedicina(Request $request, Response $response,$idAtencion)
     {
         sessionValidate('auth');
-        $idAtencion = $_GET['idAtencion'];
         $atencionMedica = new AtencionMedica();
-        $atencionMedica->idatencionmedica($idAtencion);
+        $atencionMedica->idatencionmedica($idAtencion['idAtencion']);
         $responseAtencionMedica = $atencionMedica->find();
-
-        $persona = new Persona();
-        $persona->idPersona($personaId['personaId']);
-        $onePersona = $persona->find();
-       
 
         $loteNew = new Lote();
         $listadoLotes = $loteNew->getAll(false,true);
         echo $this->view->render('pages/EntregaMedicamento', 
         [   
             'lotes' => $listadoLotes,
-            'persona'=>$onePersona,
             'atencionMedica' => $responseAtencionMedica[0]
         ]);
         return $response;

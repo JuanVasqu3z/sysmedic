@@ -14,7 +14,7 @@ $app->get('/Paciente/Detail', 'App\Controllers\PersonController:ViewDetalleDelDe
 
 //routes of medicina
 $app->get('/Medicina/Register', 'App\Controllers\HolaController:RegisterMedicamentos');
-$app->get('/Medicina/Entrega/{personaId}', 'App\Controllers\LoteController:EntregaMedicina');
+$app->get('/Medicina/Entrega/{idAtencion}', 'App\Controllers\LoteController:EntregaMedicina');
 $app->get('/Medicina/Lista', 'App\Controllers\MedicineController:listarMedicinas');
 
 // routes of Almacen

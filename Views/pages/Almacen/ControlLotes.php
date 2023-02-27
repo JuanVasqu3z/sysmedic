@@ -29,7 +29,6 @@
               <th>F.Vencimiento</th>
               <th>F.Expedicion</th>
               <th>Cantidad</th>
-              <th>Total</th>
             </tr>
           </thead>
           <tbody>
@@ -41,7 +40,6 @@
                 <td><?= $lote->FechaVencimiento ?></td>
                 <td><?= $lote->FechaExpedicion ?></td>
                 <td><?= $lote->Cantidad ?></td>
-                <td><?= $lote->Total ?></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

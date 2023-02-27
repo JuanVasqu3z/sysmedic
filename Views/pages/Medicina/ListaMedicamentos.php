@@ -27,7 +27,6 @@
                                 <th>Presentacion</th>
                                 <th>Unidad</th>
                                 <th>Cantidad</th>
-                                <th>Accion</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,10 +38,6 @@
                                 <td><?=$medicamento->Presentancion ?></td>
                                 <td><?=$medicamento->Unidad?></td>
                                 <td><?=$medicamento->Cantidad?></td>
-                                <td>
-                                    <a href=""><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
-                                    <a href=""><i class="fa fa-regular fa-trash text-danger mr-2"></i></a>
-                                </td>
                             </tr>
                             <?php endforeach; ?> 
                         </tbody>

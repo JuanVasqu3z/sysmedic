@@ -28,7 +28,8 @@ CREATE TABLE Medicamentos (
 	Nombre varchar(255),
     Tipo varchar(255),
     Presentancion varchar(255),
-    Cantidad int
+    Cantidad varchar(255),
+    Unidad int
 );
 
 CREATE TABLE Almacenes (

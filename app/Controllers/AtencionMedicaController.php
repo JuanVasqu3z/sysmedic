@@ -52,16 +52,21 @@ class AtencionMedicaController extends BaseController
     public function ViewAtencionMedicaCreada (Request $request, Response $response,$idAtencion)
     {
         $atencionMedica = new AtencionMedica();
-        $atencionMedica->idAtencionp($idAtencion['idAtencion']);
+        $atencionMedica->idatencionmedica($idAtencion['idAtencion']);
         $resultAtencion = $atencionMedica->find();
-        if (count($resultAtencion) == 0) {
-            echo $this->view->render('pages/Paciente/AtencionMedicaCreada');
-            return $response;
-        }
-        
+        // atencion primaria
+        $atencionPrimaria = new AtencionPrimaria();
+        $atencionPrimaria->idAtencionp($idAtencion['idAtencion']);
+        $atencionPrimariaResultado = $atencionPrimaria->find();
+        // atencion medica
         $atencionMedica = new AtencionMedica();
         $responseMedica = $atencionMedica->findPerson($resultAtencion[0]->IdPersona);
-        echo $this->view->render('pages/Paciente/AtencionMedicaCreada', ['atencionPrimaria' => $resultAtencion[0],'atencionMedica' => $responseMedica]);
+        // validacion 
+        if (count($resultAtencion) == 0) {
+            echo $this->view->render('pages/Paciente/AtencionMedicaCreada', ['atencionPrimaria' => $atencionPrimariaResultado[0],'atencionMedica' => $responseMedica, 'atencionMedicaEspecifica'=>$resultAtencion[0]]);
+            return $response;
+        }        
+        echo $this->view->render('pages/Paciente/AtencionMedicaCreada', ['atencionPrimaria' => $atencionPrimariaResultado[0],'atencionMedica' => $responseMedica, 'atencionMedicaEspecifica'=>$resultAtencion[0]]);
         return $response;
     }
 }

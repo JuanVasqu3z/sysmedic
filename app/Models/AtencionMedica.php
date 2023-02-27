@@ -90,8 +90,12 @@ class AtencionMedica
 
     public function find()
     {
+        $sql = 'SELECT * FROM ' . $this->table . ' 
+        INNER JOIN AtencionesPrimarias on AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP 
+        INNER JOIN Personas on Personas.IdPersona=AtencionesPrimarias.IdPersona 
+        WHERE AtencionesMedicas.IdAtencionP="' . $this->idAtencionMedica . '"';
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' WHERE IdAtencionMedica="' . $this->idAtencionMedica . '"'
+          $sql
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);

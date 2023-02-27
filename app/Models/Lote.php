@@ -66,13 +66,12 @@ class Lote
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' ( Cantidad , FechaIngreso, FechaVencimiento, FechaExpedicion, Total, Codigo, IdAlmacen) VALUES 
+            'INSERT INTO ' . $this->table . ' ( Cantidad , FechaIngreso, FechaVencimiento, FechaExpedicion, Codigo, IdAlmacen) VALUES 
             (
                 "' . $this->cantidad . '",
                 "' . $this->fechaIngreso . '",
                 "' . $this->fechaVencimiento . '",
                 "' . $this->fechaExpedicion . '",
-                "' . $this->total . '",
                 "' . $this->codigo . '",
                 "' . $this->idAlmacen . '"
             )'
@@ -123,7 +122,6 @@ class Lote
         Lotes.FechaIngreso,
         Lotes.FechaVencimiento,
         Lotes.FechaExpedicion,
-        Lotes.Total,
         Lotes.Codigo,
         Lotes.IdAlmacen,
         Medicamentos.Codigo,

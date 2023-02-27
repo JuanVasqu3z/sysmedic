@@ -46,12 +46,6 @@
                         <input class="form-control" type="number" name="cantidad" placeholder="Default input">
                     </div>
                 </div>
-                <div class="d-flex jb fila-form">
-                    <div class="col-6">
-                        <label>Total</label>
-                        <input class="form-control" type="number" name="total" placeholder="Default input">
-                    </div>
-                </div>
                 <div class="d-flex jend mt-4">
                     <button class="btn btn-primary">Registrar</button>
                 </div>

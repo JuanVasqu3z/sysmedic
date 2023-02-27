@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <form action="/atencion-medica/save" method="POST" class="card-body">
+            <form action="#" method="POST" class="card-body">
                 <div class="d-flex jc fila-form mb-2">
                     <div class="col-11">
                         <h4 class="d-inline">Atencion Medica</h4>
@@ -62,27 +62,27 @@
                     <div class="col-11">
                         <label>Diagnostico</label>
                         <input type="hidden" name="idAtencionPrimaria" value="<?= $atencionPrimaria->IdAtencionP ?>">
-                        <textarea class="form-control text-descriccion" name="diagnostico" type="text" placeholder="Descripcion..." required></textarea>
+                        <textarea class="form-control text-descriccion" name="diagnostico" type="text" placeholder="Descripcion..." required disabled><?=$atencionMedicaEspecifica->Diagnostico ?></textarea>
                     </div>
                 </div>
                 <div class="d-flex mt-3 jc fila-form">
                     <div class="col-11">
                         <label>Recipe</label>
-                        <textarea class="form-control text-descriccion" name="recipe" type="text" placeholder="Descripcion..."></textarea>
+                        <textarea class="form-control text-descriccion" name="recipe" type="text" placeholder="Descripcion..." disabled><?=$atencionMedicaEspecifica->Recipe ?></textarea>
                     </div>
                 </div>
                 <div class="d-flex mt-3 jc fila-form">
                     <div class="col-11">
                         <div class="form-group">
                             <label>Indicacciones</label>
-                            <textarea class="form-control text-descriccion" name="indicaciones" rows="3" placeholder="Descripcion ..."></textarea>
+                            <textarea class="form-control text-descriccion" name="indicaciones" rows="3" placeholder="Descripcion ..." disabled><?=$atencionMedicaEspecifica->Indicacciones ?></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex jc mt-3 fila-form">
                     <div class="col-11 d-flex jend">
-                        <a href="/Medicina/Entrega/<?= $atencionPrimaria->IdPersona ?>?idAtencion=<?= $atencionPrimaria->IdAtencionP ?>" class="btn btn-secondary mr-3 disabled">Entregar Medicamento</a>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="/Medicina/Entrega/<?=$atencionMedicaEspecifica->IdAtencionP?>" class="btn btn-primary mr-3">Entregar Medicamento</a>
+                        <button type="submit" class="btn btn-secondary" disabled>Guardar</button>
                     </div>
 
                 </div>
