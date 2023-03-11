@@ -2,49 +2,59 @@
 
 <div class="row jc">
     <div class="col-md-10 mt-4">
-        <div class="card list-table p-3">
-            <div class="card-header">
-                <h4 class="d-inline">Lista de espera</h4>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Paciente</th>
-                            <th>Personal De Salud</th>
-                            <th>Motivo de Consulta</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Accion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($listaEspera as $tupla) : ?>
+        <?php if ($listaEspera == true) : ?>
+            <div class="card list-table p-3">
+                <div class="card-header">
+                    <h4 class="d-inline">Lista de espera</h4>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
                             <tr>
-                                <td><?= $tupla->Nombre ?> <?= $tupla->Apellido ?></td>
-                                <td><?= $tupla->NombreMedico ?> <?= $tupla->ApellidoMedico ?></td>
-                                <td><?= $tupla->MotivoDeConsulta ?></td>
-                                <td><?= $tupla->Fecha ?></td>
-                                <td><?= $tupla->Hora ?></td>
-                                <td>
-                                    <?php if( validatePermise('crear_persona') ): ?>
-                                        <a href="/Paciente/AtencionMedica/<?= $tupla->IdAtencionP ?>"><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
-                                    <?php endif; ?>
-                                    <a href="" onclick="openWindow('/exportar-recipe')"><i class="fa fa-regular fa-trash text-danger"></i></a>
-                                </td>
+                                <th>Nombre del Paciente</th>
+                                <th>Personal De Salud</th>
+                                <th>Motivo de Consulta</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <?php if (validatePermise('crear_persona')) : ?>
+                                    <th>Accion</th>
+                                <?php endif; ?>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($listaEspera as $tupla) : ?>
+                                <tr>
+                                    <td><?= $tupla->Nombre ?> <?= $tupla->Apellido ?></td>
+                                    <td><?= $tupla->NombreMedico ?> <?= $tupla->ApellidoMedico ?></td>
+                                    <td><?= $tupla->MotivoDeConsulta ?></td>
+                                    <td><?= $tupla->Fecha ?></td>
+                                    <td><?= $tupla->Hora ?></td>
+                                    <td>
+                                        <?php if (validatePermise('crear_persona')) : ?>
+                                            <a href="/Paciente/AtencionMedica/<?= $tupla->IdAtencionP ?>"><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
+                                        <?php endif; ?>
+                                        <!-- <a href="" onclick="openWindow('/exportar-recipe')"><i class="fa fa-regular fa-trash text-danger"></i></a> -->
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
-        </div>
+        <?php endif ?>
+        <?php if ($listaEspera == false) : ?>
+            <div class="card list-table p-3 justify-content-center">
+                <h2 class="text-center">La lista de espera esta vacia</h2>
+            </div>
+        <?php endif ?>
+
     </div>
 </div>
 </div>
 <script>
-    function openWindow(urlToOpen){
-        window.open(urlToOpen,'_blank');
+    function openWindow(urlToOpen) {
+        window.open(urlToOpen, '_blank');
     }
 </script>

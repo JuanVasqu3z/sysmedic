@@ -12,7 +12,7 @@ class Lote
     private $fechaVencimiento;
     private $fechaExpedicion;
     private $total;
-    private $codigo;
+    private $idMedicamento;
     private $idAlmacen;
     private $conection;
     private $table;
@@ -53,9 +53,9 @@ class Lote
         $this->fechaExpedicion = $value;
     }
 
-    public function codigo($value)
+    public function idMedicamento($value)
     {
-        $this->codigo = $value;
+        $this->idMedicamento = $value;
     }
 
     public function idAlmacen($value)
@@ -66,13 +66,14 @@ class Lote
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' ( Cantidad , FechaIngreso, FechaVencimiento, FechaExpedicion, Codigo, IdAlmacen) VALUES 
+            'INSERT INTO ' . $this->table . ' ( Cantidad , FechaIngreso, FechaVencimiento, FechaExpedicion, Total ,  IdMedicamento, IdAlmacen) VALUES 
             (
                 "' . $this->cantidad . '",
                 "' . $this->fechaIngreso . '",
                 "' . $this->fechaVencimiento . '",
                 "' . $this->fechaExpedicion . '",
-                "' . $this->codigo . '",
+                "' . $this->total . '",
+                "' . $this->idMedicamento . '",
                 "' . $this->idAlmacen . '"
             )'
         );
@@ -88,12 +89,27 @@ class Lote
             FechaVencimiento  = "' . $this->fechaVencimiento . '",
             FechaExpedicion  = "' . $this->fechaExpedicion . '",
             Total  = "' . $this->total . '",
-            Codigo  = "' . $this->codigo . '",
+            IdMedicamento  = "' . $this->idMedicamento . '",
             IdAlmacen  = "' . $this->idAlmacen . '",
             WHERE IdLote = "' . $this->idlote . '"
             '
         );
         $preparate->execute();
+    }
+
+    public function updateCantidad($idLote,$cantidad)
+    {
+        $this->idlote = $idLote;
+        $resultLote = $this->find();
+        if( count($resultLote) == 0 ){
+            return false; 
+        }
+        $sql = 'UPDATE '.$this->table.' SET 
+            Cantidad ='.($resultLote[0]->Cantidad-$cantidad).' 
+            WHERE IdLote = "' . $this->idlote . '"';
+        $preparate = $this->conection->prepare($sql);
+        $preparate->execute();
+        return true;
     }
 
     public function delete()
@@ -110,7 +126,7 @@ class Lote
             'SELECT * FROM ' . $this->table . ' WHERE IdLote="' . $this->idlote . '"'
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
 
     public function getAll($fechaVencimiento = false, $cantidadmayor = false)
@@ -118,23 +134,24 @@ class Lote
         $sql =
             'SELECT 
         Lotes.IdLote,
-        Lotes.Cantidad,
+        Lotes.Cantidad as CantidadLote,
         Lotes.FechaIngreso,
         Lotes.FechaVencimiento,
         Lotes.FechaExpedicion,
-        Lotes.Codigo,
+        Lotes.Total,
+        Lotes.IdMedicamento,
         Lotes.IdAlmacen,
-        Medicamentos.Codigo,
+        Medicamentos.IdMedicamento,
         Medicamentos.Nombre as medicaNombre,
         Medicamentos.Tipo,
         Medicamentos.Presentancion,
         Medicamentos.Unidad,
-        Medicamentos.Cantidad,
+        Medicamentos.Cantidad as CantidadMedicamento,
         Almacenes.IdAlmacen,
-        Almacenes.Cantidad,
+        Almacenes.Cantidad as CantidadAlmacen,
         Almacenes.Nombre as almacenNombre,
         Almacenes.Peldanos
-        FROM ' . $this->table . ' INNER JOIN Medicamentos ON Lotes.Codigo=Medicamentos.Codigo 
+        FROM ' . $this->table . ' INNER JOIN Medicamentos ON Lotes.IdMedicamento=Medicamentos.IdMedicamento 
         INNER JOIN Almacenes ON Lotes.IdAlmacen=Almacenes.IdAlmacen';
 
         if ($fechaVencimiento == true || $cantidadmayor == true) {

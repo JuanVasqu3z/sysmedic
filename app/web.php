@@ -10,7 +10,7 @@ $app->get('/Paciente/AtencionMedica/{idAtencion}', 'App\Controllers\AtencionPrim
 $app->get('/Paciente/AtencionMedicaCreada/{idAtencion}', 'App\Controllers\AtencionMedicaController:ViewAtencionMedicaCreada');
 $app->get('/Paciente/Control', 'App\Controllers\AtencionMedicaController:viewControlDePaciente');
 $app->get('/Paciente/Detalle/{idPersona}', 'App\Controllers\PersonController:viewDetallePaciente');
-$app->get('/Paciente/Detail', 'App\Controllers\PersonController:ViewDetalleDelDetalle');
+$app->get('/Paciente/Detail/{idAtencion}', 'App\Controllers\PersonController:ViewDetalleDelDetalle');
 
 //routes of medicina
 $app->get('/Medicina/Register', 'App\Controllers\HolaController:RegisterMedicamentos');
@@ -69,3 +69,6 @@ $app->post('/lote/save', 'App\Controllers\LoteController:saveLote');
 
 // generate pdf
 $app->get('/exportar-recipe','App\Controllers\HolaController:exportar');
+
+//entrega Medicamento
+$app->post('/entrega/save', 'App\Controllers\LoteController:saveEntrega');

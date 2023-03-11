@@ -21,7 +21,7 @@
                         <label>Medicamento</label>
                         <select class="form-control" name="medicamento_id" id="medicamento_id">
                             <?php foreach ($medicamentos as $medicamento) : ?>
-                                <option value="<?= $medicamento->Codigo  ?>"><?= $medicamento->Nombre ?></option>
+                                <option value="<?= $medicamento->IdMedicamento  ?>"><?= $medicamento->Nombre ?> en <?= $medicamento->Presentancion ?> de <?= $medicamento->Cantidad ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -29,24 +29,24 @@
                 <div class="d-flex jb fila-form mb-4">
                     <div class="col-6">
                         <label>Fecha de Ingreso</label>
-                        <input class="form-control" type="date" name="date_input" placeholder="Default input">
+                        <input class="form-control" type="date" name="date_input" value="<?php echo date("Y-m-d");?>">
                     </div>
                     <div class="col-6">
                         <label>Fecha de Vencimiento</label>
-                        <input class="form-control" type="date" name="date_due" placeholder="Default input">
+                        <input class="form-control" type="date" name="date_due" >
                     </div>
                 </div>
                 <div class="d-flex jb fila-form mb-4">
                     <div class="col-6">
                         <label>Fecha de Expedicion</label>
-                        <input class="form-control" type="date" name="date_exp" placeholder="Default input">
+                        <input class="form-control" type="date" name="date_exp" >
                     </div>
                     <div class="col-6">
                         <label>Cantidad</label>
-                        <input class="form-control" type="number" name="cantidad" placeholder="Default input">
+                        <input class="form-control" type="number" name="cantidad" placeholder="Numero de Cajas">
                     </div>
                 </div>
-                <div class="d-flex jend mt-4">
+                <div class="d-flex jend mt-4 col">
                     <button class="btn btn-primary">Registrar</button>
                 </div>
             </form>

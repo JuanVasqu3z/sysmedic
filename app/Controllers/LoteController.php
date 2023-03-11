@@ -7,8 +7,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Medicamento;
 use App\Models\Almacen;
 use App\Models\Lote;
-use App\Models\Persona;
 use App\Models\AtencionMedica;
+use App\Models\EntregaMedicamento;
 
 class LoteController extends BaseController
 {
@@ -25,14 +25,16 @@ class LoteController extends BaseController
 
     public function saveLote(Request $request, Response $response)
     {
+        sessionValidate('auth');
         $paramts = $request->getParsedBody();
         $loteNew = new Lote();
         $loteNew->idLote('lot' . date('ydms'));
-        $loteNew->cantidad($paramts['cantidad']);
         $loteNew->fechaIngreso($paramts['date_input']);
         $loteNew->fechaVencimiento($paramts['date_due']);
         $loteNew->fechaExpedicion($paramts['date_exp']);
-        $loteNew->codigo($paramts['medicamento_id']); // medicamento
+        $loteNew->total($paramts['cantidad'] * 10);
+        $loteNew->idMedicamento($paramts['medicamento_id']); // medicamento
+        $loteNew->cantidad($paramts['cantidad']);
         $loteNew->idAlmacen($paramts['almacen_id']);
         $loteNew->create();
 
@@ -64,5 +66,30 @@ class LoteController extends BaseController
             'atencionMedica' => $responseAtencionMedica[0]
         ]);
         return $response;
+    }
+
+    public function saveEntrega(Request $request, Response $response)
+    {
+        sessionValidate('auth');
+        $response = $response->withStatus(302);
+        $paramts = $request->getParsedBody();
+        // nuevo lote
+        $loteNew = new Lote();
+        $result = $loteNew->updateCantidad($paramts['lote-id'],(int)$paramts['cantidad'] );
+        if($result == false){
+            return $response->withHeader('Location', '/Medicina/Entrega/'. $paramts['IdAtencionP'].'?error=true');    
+        }
+        // create entrega medicamento
+        $entrega = new EntregaMedicamento();
+        $entrega->idLote($paramts['lote-id']);
+        $entrega->cantidad($paramts['cantidad']);
+        $entrega->atencionMedica($paramts['idAtencionPrimaria']);
+        $entrega->idPersona($paramts['IdPersona']);
+        $entrega->Fecha(date('Y-m-d'));
+        $entrega->idMedico($paramts['idMedico']);
+        $entrega->idAtencionP($paramts['IdAtencionP']);
+        $entrega->create();
+
+        return $response->withHeader('Location', '/Paciente/AtencionMedicaCreada/'. $paramts['IdAtencionP']);
     }
 }

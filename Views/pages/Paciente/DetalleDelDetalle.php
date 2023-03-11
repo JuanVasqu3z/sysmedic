@@ -9,9 +9,6 @@
                     <img class="img-circle" src="<?= assets('image/avatar.png') ?>" alt="User Image" id="imagen">
                     <span class="username text-primary" id="nombreCompleto">Juan Vasquez</span>
                     <div class="d-flex sub-nombre">
-                        <small class="mr-2" id="tipo">Estudiante</small>
-                        <small class="mr-2">de</small>
-                        <small id="carrera">Informatica</small>
                     </div>
                 </div>
                 <!-- /.user-block -->
@@ -44,7 +41,7 @@
                     <div class="d-flex mt-3 form-fila je">
                         <div class="col-11">
                         <small class="">Motivo</small>
-                            <p class="">bla bla bla bla bla bla bla bla bla bla bla bla bla bal bal bla bla bla</p>
+                            <p class="">Dolor de Cabeza</p>
                         </div>
                     </div>
                 </div>
@@ -59,7 +56,7 @@
                     <div class="d-flex form-fila mt-2 je">
                         <div class="col-6">
                         <small class="">Doctor</small>
-                        <p class="">Grau</p>
+                        <p class="">Luis Jose Grau</p>
                         </div>
                         <div class="col-3">
                         <small>Diagnostico</small>
@@ -74,7 +71,7 @@
                     <div class="d-flex form-fila mt-2 je">
                         <div class="col-11">
                             <small class="">Recipe</small>
-                            <p class="">asia lala sasa lala sasa papa papa</p>
+                            <p class=""></p>
                         </div>
                         
                     </div>
@@ -82,7 +79,7 @@
                     <div class="d-flex mt-3 form-fila je">
                         <div class="col-11">
                         <small class="">Indicaciones</small>
-                            <p class="">bla bla bla bla bla bla bla bla bla bla bla bla bla bal bal bla bla bla</p>
+                            <p class=""></p>
                         </div>
                     </div>
                 </div>

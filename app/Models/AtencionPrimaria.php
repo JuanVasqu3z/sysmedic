@@ -6,7 +6,6 @@ class AtencionPrimaria
 {
     private $idAtencionp;
     private $idPersona;
-    private $idPersonadeApoyo;
     private $fecha;
     private $hora;
     private $motivodeConsulta;
@@ -28,11 +27,6 @@ class AtencionPrimaria
     public function idPersona($value)
     {
         $this->idPersona = $value;
-    }
-
-    public function idPersonadeApoyo($value)
-    {
-        $this->idPersonadeApoyo = $value;
     }
 
     public function fecha($value)

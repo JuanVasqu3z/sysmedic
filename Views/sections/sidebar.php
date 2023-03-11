@@ -1,5 +1,5 @@
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #4f0000;">
       <!-- Brand Logo -->
       <a href="" class="brand-link">
           <img src="<?= assets('image/uptos.png') ?>" alt="AdminLTE Logo" class="logo-side">
@@ -21,7 +21,7 @@
           <!-- Sidebar Menu -->
           <nav class="mt-2">
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                  <li class="nav-item menu-open">
+                  <li class="nav-item">
                       <a href="/" class="nav-link">
                           <i class="fa fa-home fa-house-blank mr-1"></i>
                           <p>
@@ -69,19 +69,19 @@
                       <a href="#" class="nav-link">
                           <i class="fa fa-sharp fa-regular fa-syringe mr-1"></i>
                           <p>
-                              Medicina
+                              Medicamentos
                               <i class="right fas fa-angle-left"></i>
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="/Medicina/Lista" class="nav-link">
-                                  <p class="ml-4">Lista de Medicamentos</p>
+                                  <p class="ml-3">Lista de Medicamentos</p>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="/Medicina/Register" class="nav-link">
-                                  <p class="ml-4">Registro de Medicamentos</p>
+                                  <p class="ml-3">Registro de Medicamentos</p>
                               </a>
                           </li>
                       </ul>

@@ -67,7 +67,7 @@
                                 <td><?= $medica->Fecha ?></td>
                                 <td><?= $medica->Hora ?></td>
                                 <td>
-                                    <a href="/Paciente/Detail"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
+                                    <a href="/Paciente/Detail/<?= $medica->IdAtencionMedica?>"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

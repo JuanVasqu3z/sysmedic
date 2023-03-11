@@ -17,22 +17,22 @@
   <div class="col-md-10 mt-4">
     <!-- Box Comment -->
     <div class="card card-widget">
-      <div class="card-header">
+      <div class="card-header ">
         <div class="user-block">
           <?php if (isset($persona)) : ?>
             <img class="img-circle" src="<?= assets('image/avatar.png') ?>" alt="User Image" id="imagen">
             <span class="username text-primary" id="nombreCompleto"><?= $persona->Nombre ?> <?= $persona->Apellido ?></span>
             <div class="d-flex sub-nombre">
-              <small class="mr-2" id="tipo">Estudiante</small>
+              <!-- <small class="mr-2" id="tipo">Estudiante</small>
               <small class="mr-2">de</small>
-              <small id="carrera">Informatica</small>
+              <small id="carrera">Informatica</small> -->
             </div>
           <?php endif; ?>
         </div>
         <!-- /.user-block -->
         <form action="/persona/search" method="GET" class="card-tools d-flex" id="MyForm">
           <input class="form-control mr-3" type="text" placeholder="Buscar por Cedula" name="CedulaPersona" id="CedulaPersona" required>
-          <button class="btn btn-primary mr-2" type="submit"><i class="fas fa-search" onclick="Busqueda()"></i></button>
+          <button class="btn btn-primary mr-3" type="submit"><i class="fas fa-search" onclick="Busqueda()"></i></button>
         </form>
       </div>
       <!-- /.card-header -->
@@ -81,13 +81,13 @@
         </div>
         <div class="card-body">
           <div class="d-flex form-fila">
-            <!-- <div class="col-6">
+            <div class="col-6">
               <label>Fecha</label>
-              <input class="form-control" name="date" type="date" placeholder="Default input">
-            </div> -->
+              <input class="form-control" name="date" type="date" value="<?php echo date("Y-m-d");?>" disabled>
+            </div>
             <div class="col-6">
               <label>Hora</label>
-              <input class="form-control" name="time" type="time" placeholder="Default input">
+              <input class="form-control" name="time" type="time" value="<?php echo date("H:i");?>" disabled>
             </div>
           </div>
           <input type="hidden" name="persona_id" value="<?= $persona->IdPersona ?>">
@@ -99,7 +99,7 @@
               </div>
             </div>
           </div>
-          <div class="d-flex jend mt-1">
+          <div class="d-flex jend mt-1 col">
             <button class="btn btn-primary">Iniciar Consulta</button>
           </div>
         </div>

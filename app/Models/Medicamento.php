@@ -4,6 +4,7 @@ namespace App\Models;
 
 class Medicamento
 {
+    private $idMedicamento;
     private $codigo;
     private $nombre;
     private $tipo;
@@ -17,6 +18,11 @@ class Medicamento
     {
         $this->conection = \App\Core\conection();
         $this->table = 'Medicamentos';
+    }
+
+    public function idMedicamento($value)
+    {
+        $this->idMedicamento = $value;
     }
 
     public function codigo($value)
@@ -52,8 +58,9 @@ class Medicamento
     public function create()
     {
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (Codigo, Nombre, Tipo, Presentancion, Unidad, Cantidad) VALUES 
+            'INSERT INTO ' . $this->table . ' (IdMedicamento, Codigo, Nombre, Tipo, Presentancion, Unidad, Cantidad) VALUES 
             (
+                "' . $this->idMedicamento . '",
                 "' . $this->codigo . '",
                 "' . $this->nombre . '",
                 "' . $this->tipo . '",
@@ -82,7 +89,7 @@ class Medicamento
     public function delete()
     {
         $preparate = $this->conection->prepare(
-            'DELETE FROM ' . $this->table . ' WHERE Codigo="' . $this->codigo . '"'
+            'DELETE FROM ' . $this->table . ' WHERE IdMedicamento="' . $this->idMedicamento . '"'
         );
         $preparate->execute();
     }
@@ -90,7 +97,7 @@ class Medicamento
     public function find()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . ' WHERE Codigo="' . $this->codigo . '"'
+            'SELECT * FROM ' . $this->table . ' WHERE IdMedicamento="' . $this->idMedicamento . '"'
         );
         $preparate->execute();
         return $preparate->fetchAll();

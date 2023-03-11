@@ -13,6 +13,7 @@ class MedicineController extends BaseController
         $dataPost = $request->getParsedBody();
 
         $medicamento = new Medicamento();
+        $medicamento->idMedicamento($dataPost['codigo'] . date('hsmy'));
         $medicamento->codigo($dataPost['codigo']);
         $medicamento->nombre($dataPost['nombre']);
         $medicamento->tipo($dataPost['tipo']);

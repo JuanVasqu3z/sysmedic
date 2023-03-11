@@ -9,7 +9,7 @@ class EntregaMedicamento
     private $idLote;
     private $cantidad;
     private $fecha;
-    private $idPersonalDeApoyo;
+    private $idPersona;
     private $idAtencionP;
     private $idMedico;
     private $table;
@@ -51,9 +51,9 @@ class EntregaMedicamento
         $this->fecha = $value;
     }
 
-    public function idPersonalDeApoyo($value)
+    public function idPersona($value)
     {
-        $this->idPersonalDeApoyo = $value;
+        $this->idPersona = $value;
     }
 
     public function idAtencionP($value)
@@ -64,18 +64,18 @@ class EntregaMedicamento
 
     public function create()
     {
+        $sql = 'INSERT INTO ' . $this->table . ' ( IdAtencionMedica, IdLote, Cantidad, Fecha, IdPersona, IdMedico, IdAtencionP) VALUES 
+        (
+            "' . $this->atencionMedica . '",
+            ' . $this->idLote . ',
+            ' . $this->cantidad . ',
+            "' . $this->fecha . '",
+            "' . $this->idPersona . '",
+            "' . $this->idMedico . '",
+            1
+        )'; 
         $preparate = $this->conection->prepare(
-            'INSERT INTO ' . $this->table . ' (IdEntregaM, AtencionMedica, IdLote, Cantidad, Fecha, IdPersonalDeApoyo, IdMedico, IdAtencionP) VALUES 
-            (
-                "' . $this->idEntregaM . '",
-                "' . $this->atencionMedica . '",
-                "' . $this->idLote . '",
-                "' . $this->cantidad . '",
-                "' . $this->fecha . '",
-                "' . $this->idPersonalDeApoyo . '",
-                "' . $this->idMedico . '",
-                "' . $this->idAtencionP . '",
-            )'
+           $sql 
         );
         $preparate->execute();
     }
@@ -88,7 +88,7 @@ class EntregaMedicamento
             IdLote  = "' . $this->idLote . '",
             Cantidad  = "' . $this->cantidad . '",
             Fecha  = "' . $this->fecha . '",
-            IdPersonalDeApoyo  = "' . $this->idPersonalDeApoyo . '",
+            IdPersonalDeApoyo  = "' . $this->idPersona . '",
             IdMedico  = "' . $this->idMedico . '",
             IdAtencionP  = "' . $this->idMedico . '",
             WHERE IdEntregaM = "' . $this->idEntregaM . '"

@@ -24,7 +24,8 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Medicamentos (
-	Codigo int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    IdMedicamento varchar(255) PRIMARY KEY,
+	Codigo varchar(255),
 	Nombre varchar(255),
     Tipo varchar(255),
     Presentancion varchar(255),
@@ -89,9 +90,10 @@ CREATE TABLE Lotes (
     FechaIngreso Date,
     FechaVencimiento Date,
     FechaExpedicion Date,
-    Codigo INT,
+    Total INT,
+    IdMedicamento varchar(255),
     IdAlmacen INT,
-    FOREIGN KEY (Codigo) REFERENCES Medicamentos (Codigo) ON DELETE CASCADE,
+    FOREIGN KEY (IdMedicamento) REFERENCES Medicamentos (IdMedicamento) ON DELETE CASCADE,
     FOREIGN KEY (IdAlmacen) REFERENCES Almacenes (IdAlmacen) ON DELETE CASCADE
 );
 

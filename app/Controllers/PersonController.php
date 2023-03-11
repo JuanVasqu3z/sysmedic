@@ -136,9 +136,22 @@ class PersonController extends BaseController
         return $response;
     }
 
-    public function ViewDetalleDelDetalle(Request $request, Response $response, $args)
+    public function ViewDetalleDelDetalle(Request $request, Response $response,$idAtencion)
     {
         sessionValidate('auth');
+        // $atencionMedica = new AtencionMedica();
+        // $atencionMedica->idatencionmedica($idAtencion['idAtencion']);
+        // $resultAtencion = $atencionMedica->find();
+        // // atencion primaria
+        // $atencionPrimaria = new AtencionPrimaria();
+        // $atencionPrimaria->idAtencionp($idAtencion['idAtencion']);
+        // $atencionPrimariaResultado = $atencionPrimaria->find();
+        // // atencion medica
+        // $atencionMedica = new AtencionMedica();
+        // $responseMedica = $atencionMedica->findPerson($resultAtencion[0]->IdPersona);       
+        // echo $this->view->render('pages/Paciente/Detail', 
+        // ['atencionPrimaria' => $atencionPrimariaResultado[0],'atencionMedica' => 
+        // $responseMedica, 'atencionMedicaEspecifica'=>$resultAtencion[0]]);
         echo $this->view->render('pages/Paciente/DetalleDelDetalle');
         return $response;
     }

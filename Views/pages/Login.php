@@ -21,7 +21,7 @@
     <div class="card col-lg-4 col-md-5 card-login">
         <div class="card-header text-center">
             <img class="img-circle img-login" src="<?= assets('image/uptos.png') ?>" alt="User Image" id="imagen">
-            <p class="h2 text-primary"><b>Sistema Medico</b></p>
+            <p class="h2 text-primary"><b>Sistema Médico</b></p>
         </div>
         <div class="card-body">
             <form action="/start/singin" method="post">

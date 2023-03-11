@@ -8,9 +8,9 @@
                     <img class="img-circle" src="<?= assets('image/avatar.png') ?>" alt="User Image" id="imagen">
                     <span class="username text-primary" id="nombreCompleto"><?= $atencionPrimaria->Nombre ?> <?= $atencionPrimaria->Apellido ?></span>
                     <div class="d-flex sub-nombre">
-                        <small class="mr-2" id="tipo">Estudiante</small>
+                        <!-- <small class="mr-2" id="tipo">Estudiante</small>
                         <small class="mr-2">de</small>
-                        <small id="carrera">Informatica</small>
+                        <small id="carrera">Informatica</small> -->
                     </div>
                 </div>
                 <!-- /.user-block -->
@@ -62,26 +62,26 @@
                     <div class="col-11">
                         <label>Diagnostico</label>
                         <input type="hidden" name="idAtencionPrimaria" value="<?= $atencionPrimaria->IdAtencionP ?>">
-                        <textarea class="form-control text-descriccion" name="diagnostico" type="text" placeholder="Descripcion..." required disabled><?=$atencionMedicaEspecifica->Diagnostico ?></textarea>
+                        <textarea class="form-control text-descriccion" name="diagnostico" type="text" placeholder="Descripcion..." required disabled><?= $atencionMedicaEspecifica->Diagnostico ?></textarea>
                     </div>
                 </div>
                 <div class="d-flex mt-3 jc fila-form">
                     <div class="col-11">
                         <label>Recipe</label>
-                        <textarea class="form-control text-descriccion" name="recipe" type="text" placeholder="Descripcion..." disabled><?=$atencionMedicaEspecifica->Recipe ?></textarea>
+                        <textarea class="form-control text-descriccion" name="recipe" type="text" placeholder="Descripcion..." disabled><?= $atencionMedicaEspecifica->Recipe ?></textarea>
                     </div>
                 </div>
                 <div class="d-flex mt-3 jc fila-form">
                     <div class="col-11">
                         <div class="form-group">
                             <label>Indicacciones</label>
-                            <textarea class="form-control text-descriccion" name="indicaciones" rows="3" placeholder="Descripcion ..." disabled><?=$atencionMedicaEspecifica->Indicacciones ?></textarea>
+                            <textarea class="form-control text-descriccion" name="indicaciones" rows="3" placeholder="Descripcion ..." disabled><?= $atencionMedicaEspecifica->Indicacciones ?></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex jc mt-3 fila-form">
                     <div class="col-11 d-flex jend">
-                        <a href="/Medicina/Entrega/<?=$atencionMedicaEspecifica->IdAtencionP?>" class="btn btn-primary mr-3">Entregar Medicamento</a>
+                        <a href="/Medicina/Entrega/<?= $atencionMedicaEspecifica->IdAtencionP ?>" class="btn btn-primary mr-3">Entregar Medicamento</a>
                         <button type="submit" class="btn btn-secondary" disabled>Guardar</button>
                     </div>
 
@@ -91,29 +91,37 @@
         </div>
     </div>
 </div>
-<div class="card-body table-responsive mt-3">
-    <h4 class="ml-2 mb-0">Atendidas</h4>
-    <table class="table table-hover text-nowrap">
-        <thead>
-            <tr>
-                <th>Motivo</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Accion</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($atencionMedica as $medica) : ?>
-                <tr>
-                    <td><?= $medica->MotivoDeconsulta ?></td>
-                    <td><?= $medica->Fecha ?></td>
-                    <td><?= $medica->Hora ?></td>
-                    <td>
+<div class="row jc">
+    <div class="col-md-10 mt-4">
+        <div class="card card-widget p-3">
+            <div class="card-body table-responsive mt-3">
+                <h4 class="ml-2 mb-0">Historial del Paciente</h4>
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Motivo</th>
+                            <th>Diagnostico</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <!-- <th>Accion</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($atencionMedica as $medica) : ?>
+                            <tr>
+                                <td><?= $medica->MotivoDeconsulta ?></td>
+                                <td><?= $medica->Diagnostico ?></td>
+                                <td><?= $medica->Fecha ?></td>
+                                <td><?= $medica->Hora ?></td>
+                                <!-- <td>
                         <a href="/Paciente/Detail"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+                    </td> -->
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 </div>

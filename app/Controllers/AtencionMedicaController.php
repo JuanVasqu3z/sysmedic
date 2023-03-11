@@ -51,6 +51,7 @@ class AtencionMedicaController extends BaseController
     }
     public function ViewAtencionMedicaCreada (Request $request, Response $response,$idAtencion)
     {
+        sessionValidate('auth');
         $atencionMedica = new AtencionMedica();
         $atencionMedica->idatencionmedica($idAtencion['idAtencion']);
         $resultAtencion = $atencionMedica->find();
@@ -66,7 +67,9 @@ class AtencionMedicaController extends BaseController
             echo $this->view->render('pages/Paciente/AtencionMedicaCreada', ['atencionPrimaria' => $atencionPrimariaResultado[0],'atencionMedica' => $responseMedica, 'atencionMedicaEspecifica'=>$resultAtencion[0]]);
             return $response;
         }        
-        echo $this->view->render('pages/Paciente/AtencionMedicaCreada', ['atencionPrimaria' => $atencionPrimariaResultado[0],'atencionMedica' => $responseMedica, 'atencionMedicaEspecifica'=>$resultAtencion[0]]);
+        echo $this->view->render('pages/Paciente/AtencionMedicaCreada', 
+        ['atencionPrimaria' => $atencionPrimariaResultado[0],'atencionMedica' => 
+        $responseMedica, 'atencionMedicaEspecifica'=>$resultAtencion[0]]);
         return $response;
     }
 }

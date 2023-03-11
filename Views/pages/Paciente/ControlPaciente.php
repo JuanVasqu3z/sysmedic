@@ -40,7 +40,7 @@
                   <td><?= calculateVisitas($persona->Cedula, $atencionesMedicas) ?></td>
                   <td>
                     <a href="/Paciente/Detalle/<?= $persona->IdPersona ?>"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
-                    <a href=""><a href=""><i class="fa fa-regular fa-trash text-danger"></i></a></a>
+                    <!-- <a href=""><a href=""><i class="fa fa-regular fa-trash text-danger"></i></a></a> -->
                   </td>
                 </tr>
               <?php endif; ?>

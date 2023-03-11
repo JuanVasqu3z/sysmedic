@@ -2,7 +2,7 @@
 
 <head>
     <title>Recipe medico 2023/2332</title>
-    <style>
+    <style type="text/css" media="print">
         table{
             border:1px solid red;
         }
