@@ -120,6 +120,46 @@ class EntregaMedicamento
             'SELECT * FROM ' . $this->table
         );
         $preparate->execute();
-        return $preparate->fetchAll();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function findAll()
+    {
+        $sql =
+        'SELECT
+        Personas.Nombre,
+        Personas.Apellido,
+        Personas.Cedula,
+        EntregaDeMedicamentos.IdEntrega,
+        EntregaDeMedicamentos.IdLote, 
+        EntregaDeMedicamentos.Cantidad, 
+        EntregaDeMedicamentos.Fecha as FechaEntrega, 
+        EntregaDeMedicamentos.IdPersona, 
+        EntregaDeMedicamentos.IdMedico, 
+        AtencionesMedicas.IdAtencionMedica, 
+        AtencionesMedicas.IdMedico, 
+        Lotes.IdMedicamento,
+        Medicamentos.Nombre as NombreMedicamento,
+        Medicamentos.Presentancion,
+        Medicamentos.Cantidad as CantidadMedicamento,
+        PersonaMedico.Nombre as NombreMedico,
+        PersonaMedico.Apellido as ApellidoMedico
+  
+        FROM EntregaDeMedicamentos 
+        INNER JOIN AtencionesMedicas ON EntregaDeMedicamentos.IdAtencionMedica = AtencionesMedicas.IdAtencionMedica
+        INNER JOIN Personas ON Personas.IdPersona = EntregaDeMedicamentos.IdPersona
+        INNER JOIN Lotes ON EntregaDeMedicamentos.IdLote = Lotes.IdLote
+        INNER JOIN Medicamentos ON Lotes.IdMedicamento = Medicamentos.IdMedicamento
+        INNER JOIN Medicos ON Medicos.IdMedico = EntregaDeMedicamentos.IdMedico
+        INNER JOIN Personas AS PersonaMedico ON PersonaMedico.IdPersona = Medicos.IdPersona
+        WHERE EntregaDeMedicamentos.IdAtencionMedica = AtencionesMedicas.IdAtencionMedica
+        AND Lotes.IdLote = EntregaDeMedicamentos.IdLote';
+        
+        $preparate = $this->conection->prepare(
+            $sql
+        );
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+
     }
 }

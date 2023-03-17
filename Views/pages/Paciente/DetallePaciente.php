@@ -1,6 +1,10 @@
-<?php $this->layout('layouts/admin') ?>
+<?php
+
+use App\Models\AtencionMedica;
+
+ $this->layout('layouts/admin') ?>
 <div class="row jc">
-    <div class="col-md-10 mt-4">
+    <div class="col-md-10 mt-4 p-2">
         <!-- Box Comment -->
         <div class="card card-widget">
             <div class="card-header">
@@ -49,53 +53,62 @@
             </div>
 
             <!-- Tabla de Atencion Medica-->
-            <div class="card-body table-responsive mt-3">
-                <h4 class="ml-2 mb-0">Atendidas</h4>
-                <table class="table table-hover text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>Motivo</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Accion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($atencionMedica as $medica) : ?>
+            <div class="card-body table-responsive mt-3 px-5">
+                <?php if(isset($atencionMedica)) :?>
+                    <h4 class="ml-2 mb-0">Atendidas</h4>
+                    <table class="table table-borderless table-hover">
+                        <thead>
                             <tr>
-                                <td><?= $medica->MotivoDeconsulta ?></td>
-                                <td><?= $medica->Fecha ?></td>
-                                <td><?= $medica->Hora ?></td>
-                                <td>
-                                    <a href="/Paciente/Detail/<?= $medica->IdAtencionMedica?>"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
-                                </td>
+                                <th>Motivo</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Accion</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($atencionMedica as $medica) : ?>
+                                <tr>
+                                    <td><?= $medica->MotivoDeconsulta ?></td>
+                                    <td><?= $medica->Fecha ?></td>
+                                    <td><?= $medica->Hora ?></td>
+                                    <td>
+                                        <a href="/Paciente/Detail/<?= $medica->IdAtencionMedica?>"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif;?>
+                <?php if(!isset($atencionMedica)) :?>
+                    <div class=" p-3 justify-content-center">
+                        <h2 class="text-center">El Paciente no a sido atendido</h2>
+                    </div>
+                <?php endif;?>
             </div>
             <!-- Tabla de AtencionPrimaria  -->
-            <div class="card-body table-responsive mt-5 bordT">
-                <h4 class="ml-2 mb-0">No Atendidas</h4>
-                <table class="table table-hover text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>Motivo</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($primariaAtencion as $primaria) : ?>
+            <?php if($primariaAtencion == true) :?>
+                <div class="card-body table-responsive mt-5 bordT px-5">
+                    <h4 class="ml-2 mb-0">No Atendidas</h4>
+                    <table class="table table-hover  table-borderless">
+                        <thead>
                             <tr>
-                                <td><?= $primaria->MotivoDeconsulta ?></td>
-                                <td><?= $primaria->Fecha  ?></td>
-                                <td><?= $primaria->Hora  ?></td>
+                                <th>Motivo</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($primariaAtencion as $primaria) : ?>
+                                <tr>
+                                    <td><?= $primaria->MotivoDeconsulta ?></td>
+                                    <td><?= $primaria->Fecha  ?></td>
+                                    <td><?= $primaria->Hora  ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php endif;?>
         </div>
     </div>
 </div>

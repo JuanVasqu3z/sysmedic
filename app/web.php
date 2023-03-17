@@ -10,12 +10,13 @@ $app->get('/Paciente/AtencionMedica/{idAtencion}', 'App\Controllers\AtencionPrim
 $app->get('/Paciente/AtencionMedicaCreada/{idAtencion}', 'App\Controllers\AtencionMedicaController:ViewAtencionMedicaCreada');
 $app->get('/Paciente/Control', 'App\Controllers\AtencionMedicaController:viewControlDePaciente');
 $app->get('/Paciente/Detalle/{idPersona}', 'App\Controllers\PersonController:viewDetallePaciente');
-$app->get('/Paciente/Detail/{idAtencion}', 'App\Controllers\PersonController:ViewDetalleDelDetalle');
+$app->get('/Paciente/Detail/{idAtencion}', 'App\Controllers\AtencionMedicaController:ViewDetalleMedico');
 
 //routes of medicina
 $app->get('/Medicina/Register', 'App\Controllers\HolaController:RegisterMedicamentos');
 $app->get('/Medicina/Entrega/{idAtencion}', 'App\Controllers\LoteController:EntregaMedicina');
 $app->get('/Medicina/Lista', 'App\Controllers\MedicineController:listarMedicinas');
+$app->get('/Medicina/Historial', 'App\Controllers\LoteController:viewEntregaMedicamento');
 
 // routes of Almacen
 $app->get('/Almacen/Register', 'App\Controllers\LoteController:viewRegisterLote');
@@ -32,7 +33,7 @@ $app->get('/foo', function (Request $request, Response $response, $args) {
     return $response;
 });
 
-$app->get('/hola', 'App\Controllers\HolaController:index');
+// $app->get('/hola', 'App\Controllers\HolaController:index');
 
 // login 
 $app->get('/login', 'App\Controllers\HolaController:Login');

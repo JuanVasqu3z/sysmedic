@@ -27,6 +27,9 @@
     <!-- summernote -->
     <link rel="stylesheet" href="<?= assets('/css/summernote-bs4.min.css') ?>">
     <link rel="stylesheet" href="<?= assets('/css/Login.css') ?>">
+    <script>
+        window.path_url = 'http://api.uptos.edu.ve/1.7.7';
+    </script>
 </head>
 
 <body>

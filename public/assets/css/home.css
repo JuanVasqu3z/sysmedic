@@ -41,3 +41,12 @@
 .fila-100 {
     width: 100%;
 }
+
+.p-small {
+    font-size: 14px;
+    font-family: lato;
+}
+
+.arr {
+    margin-left: 4.5%;
+}

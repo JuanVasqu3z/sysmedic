@@ -23,15 +23,20 @@
             <img class="img-circle" src="<?= assets('image/avatar.png') ?>" alt="User Image" id="imagen">
             <span class="username text-primary" id="nombreCompleto"><?= $persona->Nombre ?> <?= $persona->Apellido ?></span>
             <div class="d-flex sub-nombre">
-              <!-- <small class="mr-2" id="tipo">Estudiante</small>
-              <small class="mr-2">de</small>
-              <small id="carrera">Informatica</small> -->
             </div>
           <?php endif; ?>
         </div>
         <!-- /.user-block -->
         <form action="/persona/search" method="GET" class="card-tools d-flex" id="MyForm">
-          <input class="form-control mr-3" type="text" placeholder="Buscar por Cedula" name="CedulaPersona" id="CedulaPersona" required>
+          <input 
+            class="form-control mr-3" 
+            type="text" placeholder="Buscar por Cedula" 
+            name="CedulaPersona" 
+            id="CedulaPersona" 
+            required
+            minlength="7"
+            maxlength="8"
+          >
           <button class="btn btn-primary mr-3" type="submit"><i class="fas fa-search" onclick="Busqueda()"></i></button>
         </form>
       </div>
@@ -83,11 +88,11 @@
           <div class="d-flex form-fila">
             <div class="col-6">
               <label>Fecha</label>
-              <input class="form-control" name="date" type="date" value="<?php echo date("Y-m-d");?>" disabled>
+              <input class="form-control" name="fecha" type="date" value="<?php echo date("Y-m-d");?>" readonly>
             </div>
             <div class="col-6">
               <label>Hora</label>
-              <input class="form-control" name="time" type="time" value="<?php echo date("H:i");?>" disabled>
+              <input class="form-control" name="hora" type="time" value="<?php echo date("H:i");?>" readonly>
             </div>
           </div>
           <input type="hidden" name="persona_id" value="<?= $persona->IdPersona ?>">

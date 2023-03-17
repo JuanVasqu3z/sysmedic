@@ -6,6 +6,7 @@ use App\Models\AtencionMedica;
 use App\Models\AtencionPrimaria;
 use App\Models\Persona;
 use App\Core\Sesion;
+use App\Models\EntregaMedicamento;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -55,6 +56,8 @@ class AtencionMedicaController extends BaseController
         $atencionMedica = new AtencionMedica();
         $atencionMedica->idatencionmedica($idAtencion['idAtencion']);
         $resultAtencion = $atencionMedica->find();
+        
+        
         // atencion primaria
         $atencionPrimaria = new AtencionPrimaria();
         $atencionPrimaria->idAtencionp($idAtencion['idAtencion']);
@@ -70,6 +73,20 @@ class AtencionMedicaController extends BaseController
         echo $this->view->render('pages/Paciente/AtencionMedicaCreada', 
         ['atencionPrimaria' => $atencionPrimariaResultado[0],'atencionMedica' => 
         $responseMedica, 'atencionMedicaEspecifica'=>$resultAtencion[0]]);
+        return $response;
+    }
+    public function ViewDetalleMedico(Request $request, Response $response,$idAtencion)
+    {
+        sessionValidate('auth');
+        $atencionMedica = new AtencionMedica();
+        $atencionMedica->idatencionmedica($idAtencion['idAtencion']);
+        $resulAtencion = $atencionMedica->findDetail();
+
+        $atencion = new AtencionMedica();
+        $atencion->idatencionmedica($idAtencion['idAtencion']);
+        $arrayEntrega = $atencion->findAllEntrega();
+
+        echo $this->view->render('pages/Paciente/DetalleDelDetalle', ['Detalle' => $resulAtencion[0],'entregas' => $arrayEntrega]);
         return $response;
     }
 }

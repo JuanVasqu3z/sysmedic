@@ -9,7 +9,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-hover table-borderless">
                         <thead>
                             <tr>
                                 <th>Nombre del Paciente</th>
@@ -34,7 +34,6 @@
                                         <?php if (validatePermise('crear_persona')) : ?>
                                             <a href="/Paciente/AtencionMedica/<?= $tupla->IdAtencionP ?>"><i class="fa fa-regular fa-check mr-2 text-success"></i></i></a>
                                         <?php endif; ?>
-                                        <!-- <a href="" onclick="openWindow('/exportar-recipe')"><i class="fa fa-regular fa-trash text-danger"></i></a> -->
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -46,15 +45,10 @@
         <?php endif ?>
         <?php if ($listaEspera == false) : ?>
             <div class="card list-table p-3 justify-content-center">
-                <h2 class="text-center">La lista de espera esta vacia</h2>
+                <h3 class="text-center">La lista de espera esta vacia</h3>
             </div>
         <?php endif ?>
 
     </div>
 </div>
 </div>
-<script>
-    function openWindow(urlToOpen) {
-        window.open(urlToOpen, '_blank');
-    }
-</script>

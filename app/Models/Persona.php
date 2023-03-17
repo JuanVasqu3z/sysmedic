@@ -115,7 +115,9 @@ class Persona
     public function getAll()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table
+            'SELECT * FROM  Personas
+            INNER JOIN AtencionesPrimarias ON AtencionesPrimarias.IdPersona =Personas.IdPersona
+            WHERE AtencionesPrimarias.IdPersona= Personas.IdPersona'
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);

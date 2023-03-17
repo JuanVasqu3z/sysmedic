@@ -169,4 +169,8 @@ class Lote
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);
     }
+    public function findMedicamento()
+    {
+        
+    }
 }

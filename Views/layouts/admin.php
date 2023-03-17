@@ -53,6 +53,9 @@
     <link rel="stylesheet" href="<?= assets('/css/home.css') ?>">
     <!--Estilos-->
     <link rel="stylesheet" href="<?= assets('/css/estilos.css') ?>">
+    <script>
+        window.path_url = 'http://api.uptos.edu.ve/1.7.7';
+    </script>
 </head>
 
 <body>

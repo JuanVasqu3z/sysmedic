@@ -1,7 +1,8 @@
 <?php $this->layout('layouts/admin') ?>
 
 <div class="row jc">
-    <div class="col-md-10 mt-4">
+        <div class="col-md-10 mt-4">
+    
         <div class="card p-3">
             <div class="card-header">
                 <h4 class="d-inline">Lista de Medicamentos</h4>
@@ -18,7 +19,7 @@
             </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                    <table class="table table-hover table-borderless">
                         <thead>
                             <tr>
                                 <th>Codigo</th>
@@ -45,6 +46,10 @@
                 </div>
                 <!-- /.card-body -->
             </div>
+            
+            
         </div>
     </div>
+    
+    
 </div>

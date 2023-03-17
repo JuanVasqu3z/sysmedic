@@ -68,7 +68,7 @@ class LoteController extends BaseController
         return $response;
     }
 
-    public function saveEntrega(Request $request, Response $response)
+    public function saveEntrega(Request $request, Response $response,)
     {
         sessionValidate('auth');
         $response = $response->withStatus(302);
@@ -91,5 +91,14 @@ class LoteController extends BaseController
         $entrega->create();
 
         return $response->withHeader('Location', '/Paciente/AtencionMedicaCreada/'. $paramts['IdAtencionP']);
+    }
+
+    public function viewEntregaMedicamento(Request $request, Response $response)
+    {
+        sessionValidate('auth');
+        $entregas = new EntregaMedicamento();
+        $listadoEntrega = $entregas->findAll();
+        echo $this->view->render('pages/Medicina/HistorialdeEntrega', ['entregas' => $listadoEntrega]);
+        return $response;
     }
 }

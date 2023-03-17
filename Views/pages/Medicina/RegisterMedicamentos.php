@@ -56,7 +56,7 @@
                         </div>
                         <div class="col-6">
                             <label>Cantidad</label>
-                            <input class="form-control" type="text" placeholder="Dosis del Medicamento" name="cantidad">
+                            <input class="form-control" type="text" placeholder="Concentracción del Medicamento" name="cantidad">
                         </div>
                     </div>
                     <div class="d-flex jend mt-5 col">

@@ -23,14 +23,13 @@
                 </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap">
+                        <table class="table table-hover table-borderless">
                             <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
                                     <th>Peldaño</th>
                                     <th>Cantidad</th> 
-                                    <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,10 +39,6 @@
                                     <td><?=$almacen->Nombre?></td>
                                     <td><?=$almacen->Peldanos?></td>
                                     <td><?=$almacen->Cantidad?></td>
-                                    <td>
-                                        <!-- <a href=""><i class="fa fa-regular fa-pen mr-2"></i></a> -->
-                                        <a href=""><i class="fa fa-regular fa-trash text-danger mr-2"></i></a>
-                                    </td>
                                 </tr>
                             </tbody>
                             <?php endforeach; ?>

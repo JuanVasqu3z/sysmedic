@@ -8,9 +8,6 @@
                     <img class="img-circle" src="<?= assets('image/avatar.png') ?>" alt="User Image" id="imagen">
                     <span class="username text-primary" id="nombreCompleto"><?= $atencionPrimaria->Nombre ?> <?= $atencionPrimaria->Apellido ?></span>
                     <div class="d-flex sub-nombre">
-                        <!-- <small class="mr-2" id="tipo">Estudiante</small>
-                        <small class="mr-2">de</small>
-                        <small id="carrera">Informatica</small> -->
                     </div>
                 </div>
                 <!-- /.user-block -->
@@ -92,36 +89,34 @@
     </div>
 </div>
 <div class="row jc">
-    <div class="col-md-10 mt-4">
-        <div class="card card-widget p-3">
-            <div class="card-body table-responsive mt-3">
-                <h4 class="ml-2 mb-0">Historial del Paciente</h4>
-                <table class="table table-hover text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>Motivo</th>
-                            <th>Diagnostico</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <!-- <th>Accion</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($atencionMedica as $medica) : ?>
+    <?php if(isset($atencionMedica)) :?>
+        <div class="col-md-10 mt-4">
+            <div class="card card-widget p-3">
+                <div class="card-body table-responsive mt-3">
+                    <h4 class="ml-2 mb-0">Historial del Paciente</h4>
+                    <table class="table table-hover text-nowrap">
+                        <thead>
                             <tr>
-                                <td><?= $medica->MotivoDeconsulta ?></td>
-                                <td><?= $medica->Diagnostico ?></td>
-                                <td><?= $medica->Fecha ?></td>
-                                <td><?= $medica->Hora ?></td>
-                                <!-- <td>
-                        <a href="/Paciente/Detail"><i class="text-primary fa fa-solid fa-eye mr-2"></i></a>
-                    </td> -->
+                                <th>Motivo</th>
+                                <th>Diagnostico</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($atencionMedica as $medica) : ?>
+                                <tr>
+                                    <td><?= $medica->MotivoDeconsulta ?></td>
+                                    <td><?= $medica->Diagnostico ?></td>
+                                    <td><?= $medica->Fecha ?></td>
+                                    <td><?= $medica->Hora ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    <?php endif;?>
 </div>
 </div>

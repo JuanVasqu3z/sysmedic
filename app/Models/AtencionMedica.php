@@ -114,9 +114,67 @@ class AtencionMedica
     public function getAll()
     {
         $preparate = $this->conection->prepare(
-            'SELECT * FROM ' . $this->table . 
-            ' INNER JOIN AtencionesPrimarias on AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP 
+            'SELECT * FROM ' . $this->table . '
+            INNER JOIN AtencionesPrimarias on AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP 
             INNER JOIN Personas on Personas.IdPersona=AtencionesPrimarias.IdPersona '
+        );
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+    public function findDetail()
+    {
+        $sql = 'SELECT 
+        AtencionesMedicas.Diagnostico,
+        AtencionesMedicas.Recipe,
+        AtencionesMedicas.Indicacciones,
+        AtencionesPrimarias.IdPersona,
+        AtencionesPrimarias.Fecha,
+        AtencionesPrimarias.Hora,
+        AtencionesPrimarias.MotivoDeconsulta,
+        Personas.Cedula,
+        Personas.Nombre,
+        Personas.Apellido,
+        Personas.Direccion,
+        Personas.NumeroTelefono,
+        Personas.Sexo,
+        PersonaMedico.Nombre as NombreMedico,
+        PersonaMedico.Apellido as ApellidoMedico,
+        PersonaAsistente.Nombre as NombreAsistente,
+        PersonaAsistente.Apellido as ApellidoAsistente
+
+        FROM  AtencionesMedicas
+        INNER JOIN AtencionesPrimarias ON AtencionesPrimarias.IdAtencionP=AtencionesMedicas.IdAtencionP 
+        INNER JOIN Personas ON Personas.IdPersona=AtencionesPrimarias.IdPersona
+        INNER JOIN Medicos ON Medicos.IdMedico=AtencionesMedicas.IdMedico
+        INNER JOIN Personas AS PersonaMedico ON PersonaMedico.IdPersona=Medicos.IdPersona
+        INNER JOIN Personas AS PersonaAsistente ON PersonaAsistente.IdPersona= AtencionesPrimarias.medicoId
+        WHERE AtencionesMedicas.IdAtencionMedica = "' . $this->idAtencionMedica . '"';
+        $preparate = $this->conection->prepare(
+            $sql
+        );
+        $preparate->execute();
+        return $preparate->fetchAll(\PDO::FETCH_OBJ);
+    }
+    public function findAllEntrega()
+    {
+        $sql =' SELECT
+        EntregaDeMedicamentos.IdEntrega,
+        EntregaDeMedicamentos.Cantidad,
+        AtencionesMedicas.IdAtencionMedica,
+        AtencionesMedicas.Diagnostico,
+        Lotes.IdMedicamento,
+        Medicamentos.Nombre as NombreMedicamento,
+        Medicamentos.Presentancion,
+        Medicamentos.Tipo,
+        Medicamentos.Cantidad as CantidadMedicamento
+        FROM AtencionesMedicas
+        INNER JOIN EntregaDeMedicamentos ON EntregaDeMedicamentos.IdAtencionMedica=AtencionesMedicas.IdAtencionMedica
+        INNER JOIN Lotes ON EntregaDeMedicamentos.IdLote = Lotes.IdLote
+        INNER JOIN Medicamentos ON Lotes.IdMedicamento = Medicamentos.IdMedicamento
+        WHERE Lotes.IdLote = EntregaDeMedicamentos.IdLote
+        AND AtencionesMedicas.IdAtencionMedica = "' . $this->idAtencionMedica . '"';
+        $preparate = $this->conection->prepare(
+            $sql
         );
         $preparate->execute();
         return $preparate->fetchAll(\PDO::FETCH_OBJ);

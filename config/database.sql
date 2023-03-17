@@ -80,6 +80,7 @@ CREATE TABLE EntregaDeMedicamentos (
     IdPersona varchar(255),
     IdMedico varchar(255),
     IdAtencionP INT,
+    FOREIGN KEY (IdAtencionMedica) REFERENCES AtencionesMedicas (IdAtencionMedica) ON DELETE CASCADE,
     FOREIGN KEY (IdPersona) REFERENCES Personas (IdPersona) ON DELETE CASCADE,
     FOREIGN KEY (IdMedico) REFERENCES Medicos (IdMedico) ON DELETE CASCADE
 );

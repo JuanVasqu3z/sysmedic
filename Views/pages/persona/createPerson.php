@@ -26,7 +26,7 @@
     <div class="col-md-10 mt-4">
         <div class="card card-widget py-2">
             <div class="card-header">
-                    <h3 class="d-inline">Crear Persona</h3>
+                    <h3 class="d-inline">Registrar Paciente</h3>
                 </div>
             <form action="/persona/save" method="POST" class="row col-12 px-3">
                 <div class="col-md-6 col-12 mt-2">
@@ -44,7 +44,7 @@
                 <div class="col-md-6 col-12 mt-2">
                     <div class="group-form">
                         <label for="">Cedula</label>
-                        <input type="text" name="cedula" id="" class="form-control" required>
+                        <input type="text" name="cedula" id="" class="form-control" required maxlength="8" minlength="7">
                     </div>
                 </div>
                 <div class="col-md-6 col-12 mt-2">
@@ -56,7 +56,7 @@
                 <div class="col-md-6 col-12 mt-2">
                     <div class="group-form">
                         <label for="">Teléfono</label>
-                        <input type="text" name="telefono" id="" class="form-control" required>
+                        <input type="tel" name="telefono" id="" class="form-control" minlength="11" maxlength="11" required>
                     </div>
                 </div>
                 <div class="col-md-6 col-12 mt-2">
@@ -66,12 +66,11 @@
                             <option >Masculino</option>
                             <option >Femenino</option>
                         </select>
-
+                    </div>
                 </div>
                 <div class="col-12 mt-4 d-flex justify-content-end">
                     <button class="btn btn-primary">Registrar</button>
                 </div>
             </form>
-        </div>
     </div>
 </div>

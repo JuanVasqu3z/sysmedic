@@ -28,22 +28,23 @@
                 </div>
                 <div class="d-flex jb fila-form mb-4">
                     <div class="col-6">
-                        <label>Fecha de Ingreso</label>
-                        <input class="form-control" type="date" name="date_input" value="<?php echo date("Y-m-d");?>">
+                        <label>Fecha de Expedicion</label>
+                        <input class="form-control" type="date" name="date_exp" required>
                     </div>
                     <div class="col-6">
                         <label>Fecha de Vencimiento</label>
-                        <input class="form-control" type="date" name="date_due" >
+                        <input class="form-control" type="date" name="date_due" required>
                     </div>
                 </div>
                 <div class="d-flex jb fila-form mb-4">
                     <div class="col-6">
-                        <label>Fecha de Expedicion</label>
-                        <input class="form-control" type="date" name="date_exp" >
+                        <label>Fecha de Ingreso</label>
+                        <input class="form-control" type="date" name="date_input" value="<?php echo date("Y-m-d");?>" readonly>
                     </div>
+                    
                     <div class="col-6">
                         <label>Cantidad</label>
-                        <input class="form-control" type="number" name="cantidad" placeholder="Numero de Cajas">
+                        <input class="form-control" type="number" name="cantidad" placeholder="Numero de Cajas" required>
                     </div>
                 </div>
                 <div class="d-flex jend mt-4 col">
